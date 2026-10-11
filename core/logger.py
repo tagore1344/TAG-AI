@@ -1,4 +1,4 @@
-# core/logger.py — Logging utility for ULTRON AI
+# core/logger.py — Logging utility for Tag AI
 import os
 import logging
 from datetime import datetime
@@ -7,9 +7,9 @@ from core.constants import LOG_FILE
 
 
 class Logger:
-    """Simple file + console logger for the ULTRON AI application."""
+    """Simple file + console logger for the Tag AI application."""
 
-    def __init__(self, name="ultron", log_file=LOG_FILE, level=logging.INFO):
+    def __init__(self, name="tag_ai", log_file=LOG_FILE, level=logging.INFO):
         self.logger = logging.getLogger(name)
         self.logger.setLevel(level)
         self.logger.propagate = False
@@ -52,7 +52,7 @@ class Logger:
         self.logger.critical(msg)
 
 
-def get_logger(name="ultron", log_file=LOG_FILE):
+def get_logger(name="tag_ai", log_file=LOG_FILE):
     """Factory function returning a configured Logger instance."""
     return Logger(name=name, log_file=log_file)
 

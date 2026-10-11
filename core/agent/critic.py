@@ -1,7 +1,7 @@
 # core/agent/critic.py
 import logging
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class Critic:

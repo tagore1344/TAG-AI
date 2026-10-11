@@ -29,7 +29,7 @@ from microphone_broker import mic_broker, MicState
 class AdvancedSpeechEngine:
 
     def __init__(self):
-        print("[SPEECH] Initializing TAG Voice Engine with Faster-Whisper...")
+        print("[SPEECH] Initializing Tag AI Voice Engine with Faster-Whisper...")
 
         self.tts = None
         self._tts_lock = threading.Lock()
@@ -76,7 +76,7 @@ class AdvancedSpeechEngine:
         if not text:
             return
 
-        print(f"[TAG TTS]: {text}")
+        print(f"[Tag AI TTS]: {text}")
 
         if self.tts is None:
             print("[SPEECH ERROR] TTS engine unavailable; response was printed only.")
@@ -140,7 +140,7 @@ class AdvancedSpeechEngine:
             mic_broker.release("AdvancedSpeechEngine")
             return ""
 
-        print("[TAG] Awaiting your direct command...")
+        print("[Tag AI] Awaiting your direct command...")
         frames = []
         start_time = time.time()
         silence_threshold = 200

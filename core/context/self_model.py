@@ -8,11 +8,11 @@ try:
 except Exception:
     psutil = None
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class SelfModel:
-    """Maintains a stateful structured representation of ULTRON's internal state, capabilities, and resources."""
+    """Maintains a stateful structured representation of Tag AI's internal state, capabilities, and resources."""
 
     def __init__(self):
         self.autonomy_level = 3  # LEVEL 3 default (low-risk autonomous)

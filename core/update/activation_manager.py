@@ -3,7 +3,7 @@ import datetime
 import logging
 from core.update.version_manager import version_manager
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class ActivationManager:

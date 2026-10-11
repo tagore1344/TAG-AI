@@ -2,7 +2,7 @@
 import logging
 from core.tools.tool_registry import ToolRegistry
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class ToolOrchestrator:

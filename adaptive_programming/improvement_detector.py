@@ -8,7 +8,7 @@ import uuid
 from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
-logger = logging.getLogger("ultron-adaptive")
+logger = logging.getLogger("tag-ai-adaptive")
 
 from adaptive_programming.capability_registry import capability_registry
 from adaptive_programming.experience_tracker import experience_tracker

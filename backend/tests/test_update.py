@@ -24,7 +24,7 @@ def clean_update_states():
     """Ensure update manager, blacklists, and directories are fresh and isolated for each test."""
     update_manager.state = "IDLE"
     update_planner.blacklisted_commits.clear()
-    os.environ["ULTRON_TEST_MODE"] = "true"
+    os.environ["TAG_AI_TEST_MODE"] = "true"
 
     # Reset active_release configuration
     version_manager.save_active_release(version_manager.default_identity)
@@ -37,7 +37,7 @@ def clean_update_states():
             pass
     os.makedirs(tmp_releases, exist_ok=True)
     yield
-    os.environ.pop("ULTRON_TEST_MODE", None)
+    os.environ.pop("TAG_AI_TEST_MODE", None)
 
 
 @pytest.mark.anyio
@@ -47,7 +47,7 @@ async def test_update_lifecycle_success():
         "manifest_version": "1.0.0",
         "version": "1.1.0",
         "commit": "835cf09a06ff5e43",
-        "repository": "tagore1344/ULTRON-AI",
+        "repository": "tagore1344/Tag AI",
         "branch": "arena/019fef42-ultron-ai",
         "checksum": "mock_checksum_sha256_123",
         "modified_files": ["ai/agents/gemini_agent.py"]
@@ -116,7 +116,7 @@ async def test_update_downgrade_blocked():
         "manifest_version": "1.0.0",
         "version": "0.9.0", # Downgrade (current is 1.0.0)
         "commit": "old_commit_hash",
-        "repository": "tagore1344/ULTRON-AI",
+        "repository": "tagore1344/Tag AI",
         "branch": "arena/019fef42-ultron-ai",
         "checksum": "mock_checksum_sha256_123"
     }
@@ -142,7 +142,7 @@ async def test_update_loop_prevention_blacklist():
         "manifest_version": "1.0.0",
         "version": "1.1.0",
         "commit": "failed_commit_hash",
-        "repository": "tagore1344/ULTRON-AI",
+        "repository": "tagore1344/Tag AI",
         "branch": "arena/019fef42-ultron-ai",
         "checksum": "mock_checksum_sha256_123"
     }
@@ -170,7 +170,7 @@ async def test_update_checksum_mismatch_rejected():
         "manifest_version": "1.0.0",
         "version": "1.1.0",
         "commit": "835cf09a06ff5e43",
-        "repository": "tagore1344/ULTRON-AI",
+        "repository": "tagore1344/Tag AI",
         "branch": "arena/019fef42-ultron-ai",
         "checksum": "expected_sha_abc123"
     }
@@ -196,7 +196,7 @@ async def test_update_blocked_on_zip_slip_traversal():
         "manifest_version": "1.0.0",
         "version": "1.1.0",
         "commit": "835cf09a06ff5e43",
-        "repository": "tagore1344/ULTRON-AI",
+        "repository": "tagore1344/Tag AI",
         "branch": "arena/019fef42-ultron-ai",
         "checksum": "expected_sha_123"
     }

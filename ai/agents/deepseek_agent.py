@@ -52,7 +52,7 @@ def ask_deepseek(prompt: str) -> str:
             messages=[
                 {
                     "role": "system",
-                    "content": "You are ULTRON AI, an intelligent cybersecurity assistant."
+                    "content": "You are Tag AI, an intelligent cybersecurity assistant."
                 },
                 {
                     "role": "user",

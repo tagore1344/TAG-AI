@@ -12,14 +12,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional
 
-logger = logging.getLogger("ultron-adaptive")
+logger = logging.getLogger("tag-ai-adaptive")
 
-# ULTRON_REPO_ROOT lets a sandboxed copy of this package keep targeting the real
+# TAG_AI_REPO_ROOT lets a sandboxed copy of this package keep targeting the real
 # repository for benchmark verification (sandbox isolation support).
 REPO_ROOT = Path(__file__.replace("\\", "/")).resolve().parent.parent
 import os as _os
-if _os.environ.get("ULTRON_REPO_ROOT"):
-    REPO_ROOT = Path(_os.environ["ULTRON_REPO_ROOT"])
+if _os.environ.get("TAG_AI_REPO_ROOT") or _os.environ.get("ULTRON_REPO_ROOT"):
+    REPO_ROOT = Path(_os.environ.get("TAG_AI_REPO_ROOT") or _os.environ["ULTRON_REPO_ROOT"])
 SKILLS_DIR = REPO_ROOT / "backend" / "data" / "adaptive_programming"
 
 

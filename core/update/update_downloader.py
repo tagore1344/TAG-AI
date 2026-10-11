@@ -3,7 +3,7 @@ import os
 import hashlib
 import logging
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class UpdateDownloader:

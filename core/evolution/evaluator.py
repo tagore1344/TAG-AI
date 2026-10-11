@@ -4,7 +4,7 @@ from typing import Dict, Any, Tuple
 
 from core.evolution.evolution_policy import policy_9c1
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class Evaluator:

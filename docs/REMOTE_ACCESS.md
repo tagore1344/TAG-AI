@@ -1,6 +1,6 @@
-# ULTRON-AI Secure Private Remote Access
+# Tag AI Secure Private Remote Access
 
-This document outlines the architectural specification and deployment guidelines for accessing your **ULTRON-AI laptop host** from a remote Android device over cellular networks (3G/4G/5G) or external Wi-Fi networks safely and securely.
+This document outlines the architectural specification and deployment guidelines for accessing your **Tag AI laptop host** from a remote Android device over cellular networks (3G/4G/5G) or external Wi-Fi networks safely and securely.
 
 ---
 
@@ -14,7 +14,7 @@ Instead, the host laptop and Android phone must communicate inside a **secure, e
 
 ## 🚀 2. Preferred Solution: Tailscale
 
-**Tailscale** is the recommended private networking solution for ULTRON-AI. It is built on top of the WireGuard protocol, requires zero configuration, manages key exchanges automatically, handles NAT traversal seamlessly, and assigns secure, private, static IP addresses to your devices.
+**Tailscale** is the recommended private networking solution for Tag AI. It is built on top of the WireGuard protocol, requires zero configuration, manages key exchanges automatically, handles NAT traversal seamlessly, and assigns secure, private, static IP addresses to your devices.
 
 ```
 ┌──────────────┐                               ┌──────────────┐
@@ -28,10 +28,10 @@ Instead, the host laptop and Android phone must communicate inside a **secure, e
 #### A. Host Windows Laptop Configuration
 1.  **Install Tailscale:** Download and run the Tailscale installer for Windows from [tailscale.com](https://tailscale.com).
 2.  **Authenticate Node:** Sign in with your account (Google, GitHub, Microsoft). Once logged in, the laptop is registered to your private tailnet and assigned a unique static IP (e.g. `100.64.0.15`).
-3.  **Configure Server Host Binding:** Ensure `ULTRON_HOST` in `.env` is set to `0.0.0.0` or to your laptop's specific Tailscale private IP adapter to permit incoming Tailscale requests.
+3.  **Configure Server Host Binding:** Ensure `TAG_AI_HOST` in `.env` is set to `0.0.0.0` or to your laptop's specific Tailscale private IP adapter to permit incoming Tailscale requests.
 4.  **Windows Firewall Restriction:** Do not disable Windows Firewall. Add a rule to permit TCP port `8000` strictly on your Tailscale network interface:
     ```powershell
-    New-NetFirewallRule -DisplayName "ULTRON Tailscale Gateway" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 8000 -InterfaceAlias "Tailscale"
+    New-NetFirewallRule -DisplayName "Tag AI Tailscale Gateway" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 8000 -InterfaceAlias "Tailscale"
     ```
 
 #### B. Android Phone Client Configuration
@@ -41,7 +41,7 @@ Instead, the host laptop and Android phone must communicate inside a **secure, e
     ```http
     http://100.64.0.15:8000/api/v1/health
     ```
-4.  **Configure ULTRON HUD:** Set the server URL in your ULTRON settings to `http://100.64.0.15:8000` to begin secure remote interaction.
+4.  **Configure Tag AI HUD:** Set the server URL in your Tag AI settings to `http://100.64.0.15:8000` to begin secure remote interaction.
 
 ---
 

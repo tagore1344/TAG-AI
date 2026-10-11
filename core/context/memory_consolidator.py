@@ -14,7 +14,7 @@ from core.neural.relation_graph import relation_graph
 from core.neural.schema_reasoner import schema_reasoner
 from core.neural.belief_state import belief_state
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class MemoryConsolidator:

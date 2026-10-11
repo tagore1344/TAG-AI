@@ -3,7 +3,7 @@ import os
 import json
 import logging
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 ACTIVE_RELEASE_FILE = "active_release.json"
 
 

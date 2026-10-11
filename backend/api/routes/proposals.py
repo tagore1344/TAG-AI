@@ -16,7 +16,7 @@ from backend.security.authorization import (
 )
 from backend.security.authentication import AuthenticatedDevice
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 router = APIRouter()
 
 

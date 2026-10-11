@@ -8,7 +8,7 @@ from fastapi import WebSocket, status
 from backend.database.device_repository import device_repo
 from backend.security.token_service import token_service
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class ConnectionManager:

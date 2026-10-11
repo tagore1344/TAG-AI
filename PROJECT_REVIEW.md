@@ -1,15 +1,15 @@
-# ULTRON AI — Comprehensive Project Review & Code Audit
+# Tag AI — Comprehensive Project Review & Code Audit
 
-Welcome to the future of AI assistants! This document provides a highly detailed architectural, structural, and security audit of the **ULTRON-AI** repository. It highlights core design patterns, identifies outstanding strengths, documents fixed critical bugs, and outlines tactical engineering recommendations for next-generation upgrades.
+Welcome to the future of AI assistants! This document provides a highly detailed architectural, structural, and security audit of the **Tag AI** repository. It highlights core design patterns, identifies outstanding strengths, documents fixed critical bugs, and outlines tactical engineering recommendations for next-generation upgrades.
 
 ---
 
 ## 🗺️ 1. Executive Summary
 
-**ULTRON-AI** is an advanced, multi-modal, and cross-platform desktop AI assistant. It beautifully bridges local hardware hooks (microphone, speaker, camera, screen/keyboard capture) with advanced multi-provider LLM orchestration (Google Gemini, OpenAI, DeepSeek) and persistent context memory.
+**Tag AI** is an advanced, multi-modal, and cross-platform desktop AI assistant. It beautifully bridges local hardware hooks (microphone, speaker, camera, screen/keyboard capture) with advanced multi-provider LLM orchestration (Google Gemini, OpenAI, DeepSeek) and persistent context memory.
 
 ### 🌟 Core Highlights
-*   **Dual-Interface Paradigm:** Features a CLI-based execution engine (`main.py` / `AssistantEngine`) alongside an automated, voice-driven PyQt6 / CustomTkinter GUI execution loop (`run_ultron.py` / `JarvisWithBrain`).
+*   **Dual-Interface Paradigm:** Features a CLI-based execution engine (`main.py` / `AssistantEngine`) alongside an automated, voice-driven PyQt6 / CustomTkinter GUI execution loop (`run_tag_ai.py` / `JarvisWithBrain`).
 *   **Layered Security Perimeter:** Incorporates local biometric confirmation (Face ID embeddings / histogram verification and Voice ID signal energy analysis) before allowing privileged shell actions.
 *   **Agent Orchestration:** Possesses a dedicated model routing, response-merging, and consensus-combining framework (`AIOrchestrator`).
 *   **Resilient Fallbacks:** Every subsystem is designed with import/hardware guards, allowing the program to degrade gracefully instead of crashing when dependencies, keys, or microphoning devices are missing.
@@ -21,7 +21,7 @@ Welcome to the future of AI assistants! This document provides a highly detailed
 The project currently maintains a clean, multi-tiered file architecture.
 
 ```
-ULTRON-AI/
+TAG-AI/
 ├── ai/                    # Deep reasoning, agents, memory cores
 │   ├── agents/            # Provider integrations (Gemini, OpenAI, DeepSeek)
 │   ├── memory/            # Stateful retention (Persistent JSON, Ephemeral, Sparse Vector)
@@ -90,13 +90,13 @@ During our active audit and testing session, we diagnosed and **successfully pat
 *   **Face Recognition (`face_id_advanced.py`):** Exceptional dual-strategy design. If `face_recognition` (dlib bindings) is installed, it extracts high-fidelity 128-d face embeddings and measures cosine similarity (threshold `0.55`). If unavailable, it falls back to normalized 2D grayscale histograms comparing raw visual features.
 
 ### ⚙️ B. Multi-Agent Orchestration & NLP
-*   **Intent Detection (`core/intent/intent_router.py`):** A rule-based keyword routing matrix that extracts parameters (e.g. website names or app targets) cleanly and strips noise words like "please", "can you", and "ultron".
+*   **Intent Detection (`core/intent/intent_router.py`):** A rule-based keyword routing matrix that extracts parameters (e.g. website names or app targets) cleanly and strips noise words like "please", "can you", and "tag_ai".
 *   **AI Routing (`ai/ai_router.py`):** Dynamically switches query routing depending on the provider parameter (`gemini`, `openai`, `deepseek`).
 *   **Aggregator (`ai/orchestrator/consensus_engine.py`):** Combines multi-model reasoning into consolidated final responses. Currently defaults to Gemini, but is structured to support multi-provider consensus-building.
 
 ### 💾 C. Stateful Memory Subsystems
 The memory ecosystem is divided into three highly functional tiers:
-1.  **Persistent Store (`ai/memory/conversation_memory.py`):** Manages historical chats, preferences, user names, and logged notes safely in a serialized local JSON file (`ultron_memory.json`).
+1.  **Persistent Store (`ai/memory/conversation_memory.py`):** Manages historical chats, preferences, user names, and logged notes safely in a serialized local JSON file (`tag_ai_memory.json`).
 2.  **Session Store (`ai/memory/session_memory.py`):** Stores short-lived runtime variables (e.g., `last_intent`, age tracking, and transient contexts).
 3.  **Vector Store (`ai/memory/vector_memory.py`):** A lightweight sparse vector database implemented purely in Python using term-frequency (TF) tokenization and Cosine Similarity calculation. It is completely dependency-free, meaning it doesn't require heavy installations like Pinecone or ChromaDB.
 
@@ -111,18 +111,16 @@ The memory ecosystem is divided into three highly functional tiers:
 
 ## 🚀 5. Strategic Recommendations
 
-<<<<<<< HEAD
-=======
 > **Session status update:** Recommendations 5.1 (multi-model consensus), 5.2
 > (Gemini `google-genai` SDK migration), and 5.3 (async subprocess hardening)
 > are now **implemented**.
 > * 5.1 — `AIOrchestrator` activates all three providers with failure-aware
 >   fallback; `ModelSelector` does keyword-category routing; availability probes
->   prevent key-missing crashes; `ULTRON_CONSENSUS_MODE=multi` enables full
+>   prevent key-missing crashes; `TAG_AI_CONSENSUS_MODE=multi` enables full
 >   multi-provider consensus (see `ai/test_orchestrator_activation.py`).
 > * 5.2 — `gemini_agent.py` now prefers the modern `google-genai` SDK with a
 >   graceful fallback to the legacy `google-generativeai` backend
->   (`ULTRON_GEMINI_SDK` override for deterministic selection).
+>   (`TAG_AI_GEMINI_SDK` override for deterministic selection).
 > * 5.3 — `system_controller.py` gained `asyncio.to_thread` async variants
 >   (`ashutdown`, `arestart`, `asleep`, `alock_screen`, `acancel_shutdown`) and
 >   `app_controller.py` gained `aopen_app`; `core/tools/tool_registry.py`
@@ -133,8 +131,7 @@ The memory ecosystem is divided into three highly functional tiers:
 > * 5.4 — dueling tool registries documented; legacy root `tool_registry.py`
 >   retained (still required by `assistant_with_brain.py`).
 
->>>>>>> feature/astra-class-agent-core
-To bring ULTRON-AI to a commercial or open-source production-grade release, we recommend implementing the following next-step enhancements:
+To bring Tag AI to a commercial or open-source production-grade release, we recommend implementing the following next-step enhancements:
 
 1.  **Fully Activate Multi-Model Consensus:**
     Un-comment the OpenAI and DeepSeek blocks in `AIOrchestrator` and upgrade `ModelSelector` to route coding/math requests to Gemini, cybersecurity/reasoning requests to DeepSeek, and conversational queries to OpenAI.

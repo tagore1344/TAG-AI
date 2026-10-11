@@ -1,8 +1,8 @@
 # backend/tests/test_e2e_integration.py
 # End-to-end integration: traces the complete Phase 9E flow through the gateway.
-# 1. ULTRON receives a request
+# 1. Tag AI receives a request
 # 2. Orchestrator selects provider
-# 3. ULTRON reasons
+# 3. Tag AI reasons
 # 4. Cognitive decision/proposal created
 # 5. Policy classifies risk
 # 6. Gateway exposes proposal
@@ -10,7 +10,7 @@
 # 8. Confirmation requested when required
 # 9. User approval processed
 # 10. ToolRegistry executes operation
-# 11. Result returned to ULTRON
+# 11. Result returned to Tag AI
 # 12. Client receives final status
 # 13. Memory/context updated
 import os
@@ -166,7 +166,7 @@ def test_complete_e2e_safe_flow(paired_device, monkeypatch):
     )
     monkeypatch.setattr(
         "ai.orchestrator.ai_orchestrator.ask_openai",
-        lambda p: "ULTRON: I'll create a voice-alias improvement proposal.",
+        lambda p: "Tag AI: I'll create a voice-alias improvement proposal.",
     )
     monkeypatch.setattr(
         "ai.orchestrator.ai_orchestrator.ask_gemini",
@@ -188,7 +188,7 @@ def test_complete_e2e_safe_flow(paired_device, monkeypatch):
     primary = ranked[0]
     reasoning = brain.ask(user_input)
     assert primary == "openai"  # conversational intent
-    assert "ULTRON" in reasoning
+    assert "Tag AI" in reasoning
 
     # 4. Cognitive decision/proposal (driven by judgment engine)
     opinion = judgment_engine.generate_opinion(user_input)

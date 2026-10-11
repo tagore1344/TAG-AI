@@ -1,4 +1,4 @@
-# main_advanced.py — Run Advanced ULTRON with AI Brain
+# main_advanced.py — Run Advanced Tag AI with AI Brain
 import sys
 import os
 import time
@@ -6,19 +6,19 @@ from assistant_with_brain import JarvisWithBrain
 
 if __name__ == "__main__":
     print("\n" + "="*60)
-    print("   🧠 ULTRON — Advanced AI Brain Edition")
+    print("   🧠 Tag AI — Advanced AI Brain Edition")
     print("   WELCOME TO THE FUTURE OF AI ASSISTANTS!")
     print("="*60)
-    print("\nStarting ULTRON...\n")
+    print("\nStarting Tag AI...\n")
 
-    ultron = JarvisWithBrain()
+    tag_ai = JarvisWithBrain()
     try:
-        ultron.start()
+        tag_ai.start()
     except KeyboardInterrupt:
-        print("\n[ULTRON] Shutting down...")
-        ultron.stop()
+        print("\n[Tag AI] Shutting down...")
+        tag_ai.stop()
     except Exception as e:
-        print(f"\n[ULTRON] Error: {e}")
+        print(f"\n[Tag AI] Error: {e}")
         import traceback
         traceback.print_exc()
         input("Press Enter to exit...")

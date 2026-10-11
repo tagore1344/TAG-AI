@@ -1,32 +1,20 @@
-<<<<<<< HEAD
-"""Model orchestration for ULTRON."""
+"""Model orchestration for Tag AI."""
 from __future__ import annotations
 
 import os
-=======
-import os
+
+from core.utils import bridge_legacy_env
+bridge_legacy_env()
 import time
 import logging
->>>>>>> origin/main
+
 
 from ai.orchestrator.prompt_manager import PromptManager
 from ai.orchestrator.model_selector import ModelSelector
 from ai.orchestrator.response_merger import ResponseMerger
 from ai.orchestrator.consensus_engine import ConsensusEngine
-<<<<<<< HEAD
-from ai.agents.gemini_agent import ask_gemini
 
-try:
-    from core.agent.astra_agent import AstraAgent
-except Exception:
-    AstraAgent = None
-
-
-class AIOrchestrator:
-    """Route ordinary reasoning and autonomous tasks through the best provider."""
-=======
-
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 try:
     from ai.agents.gemini_agent import ask_gemini
@@ -59,6 +47,12 @@ PROVIDER_ASKS = {
 ERROR_MARKERS = ("Error:", "unavailable in this environment")
 
 
+try:
+    from core.agent.astra_agent import AstraAgent
+except Exception:
+    AstraAgent = None
+
+
 class AIOrchestrator:
     """Multi-provider orchestration layer.
 
@@ -69,9 +63,8 @@ class AIOrchestrator:
       * "multi": every available provider answers; responses are merged by the
         ResponseMerger and consolidated by the ConsensusEngine.
 
-    The mode is controlled with ULTRON_CONSENSUS_MODE=fallback|multi.
+    The mode is controlled with TAG_AI_CONSENSUS_MODE=fallback|multi.
     """
->>>>>>> origin/main
 
     def __init__(self):
         self.prompt_manager = PromptManager()
@@ -85,30 +78,6 @@ class AIOrchestrator:
             except Exception as exc:
                 print(f"[ASTRA] init failed: {exc}")
 
-<<<<<<< HEAD
-    def ask(self, user_prompt: str) -> str:
-        """Generate a response, preferring GPT-6 Astra when configured."""
-        if self.astra is not None and self.astra.available() and os.getenv("ULTRON_USE_ASTRA", "1") == "1":
-            return self.astra.run(user_prompt)
-
-        prompt = self.prompt_manager.prepare_prompt(user_prompt)
-        provider = self.model_selector.choose_model(prompt)
-        responses = []
-        if provider == "gemini":
-            responses.append(ask_gemini(prompt))
-
-        if not responses:
-            return "No AI provider is configured. Set OPENAI_API_KEY to enable GPT-6 Astra."
-
-        merged = self.response_merger.merge(responses)
-        return self.consensus_engine.combine([merged])
-
-    def act(self, goal: str) -> str:
-        """Execute a multi-step goal with the Astra tool-using agent when available."""
-        if self.astra is not None and self.astra.available():
-            return self.astra.run(goal)
-        return self.ask(goal)
-=======
     # ────────────────────────────────────────────────────────────────────────
     # PROVIDER EXECUTION HELPERS
     # ────────────────────────────────────────────────────────────────────────
@@ -148,16 +117,23 @@ class AIOrchestrator:
     # ────────────────────────────────────────────────────────────────────────
 
     def ask(self, user_prompt):
+        if (
+            self.astra is not None
+            and getattr(self.astra, "available", lambda: False)()
+            and os.getenv("TAG_AI_USE_ASTRA", "0") == "1"
+        ):
+            return self.astra.run(str(user_prompt))
+
 
         if not user_prompt or not str(user_prompt).strip():
-            return "ULTRON Error: empty prompts cannot be processed."
+            return "Tag AI Error: empty prompts cannot be processed."
 
         # AI processing
         prompt = self.prompt_manager.prepare_prompt(str(user_prompt).strip())
 
         ranked = self.model_selector.rank_models(prompt)
 
-        mode = os.getenv("ULTRON_CONSENSUS_MODE", "fallback").strip().lower()
+        mode = os.getenv("TAG_AI_CONSENSUS_MODE", "fallback").strip().lower()
 
         if mode == "multi":
             responses = []
@@ -172,7 +148,7 @@ class AIOrchestrator:
 
             if not responses:
                 return (
-                    "ULTRON Error: no AI providers succeeded.\n"
+                    "Tag AI Error: no AI providers succeeded.\n"
                     + "\n".join(collected_errors)
                 )
 
@@ -190,5 +166,10 @@ class AIOrchestrator:
 
         # Every provider failed or lacks keys: fail-soft with actionable output.
         detail = "\n".join(failures) if failures else "No providers configured."
-        return f"ULTRON Error: all AI providers failed to respond.\n{detail}"
->>>>>>> origin/main
+        return f"Tag AI Error: all AI providers failed to respond.\n{detail}"
+
+    def act(self, goal: str) -> str:
+        """Execute a multi-step goal with the Astra tool-using agent when available."""
+        if self.astra is not None and self.astra.available():
+            return self.astra.run(goal)
+        return self.ask(goal)

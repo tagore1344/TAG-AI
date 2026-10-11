@@ -1,4 +1,4 @@
-# ULTRON-AI Distributed Ecosystem Architecture - ASI Core & Evolution Blueprint
+# Tag AI Distributed Ecosystem Architecture - ASI Core & Evolution Blueprint
 **Version:** 2.0.0-ASI-Core
 **Date:** 2026-08-13
 **Status:** Architecture Baseline (Approved)
@@ -7,7 +7,7 @@
 ---
 
 ## Executive Summary
-This document defines the architectural blueprint to evolve **ULTRON-AI** from an autonomous goal-directed assistant into an **ASI-Like General Intelligence Agent**. This evolution introduces independent reasoning, evidence-based opinion formation, structured multi-hypothesis debate, long-horizon goal retention, and policy-governed self-evolution.
+This document defines the architectural blueprint to evolve **Tag AI** from an autonomous goal-directed assistant into an **ASI-Like General Intelligence Agent**. This evolution introduces independent reasoning, evidence-based opinion formation, structured multi-hypothesis debate, long-horizon goal retention, and policy-governed self-evolution.
 
 ### Critical Security Perimeter (Immutable Key Isolation)
 The **Evolution Engine MUST NEVER have access to the developer/private signing keys**.

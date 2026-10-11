@@ -5,11 +5,11 @@ import logging
 from fastapi import APIRouter, HTTPException, Depends, status
 
 from backend.schemas.chat import ChatRequest, ChatResponse
-from backend.services.ultron_service import ultron_service
+from backend.services.tag_ai_service import tag_ai_service
 from backend.security.authorization import require_chat_permission
 from backend.security.authentication import AuthenticatedDevice
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 router = APIRouter()
 
 
@@ -17,8 +17,8 @@ router = APIRouter()
     "/chat",
     response_model=ChatResponse,
     status_code=status.HTTP_200_OK,
-    summary="Interact with ULTRON AI Brain",
-    description="Sends a text prompt to the ULTRON AI brain orchestrator and returns a structured response. Requires Bearer Authentication."
+    summary="Interact with Tag AI Brain",
+    description="Sends a text prompt to the Tag AI brain orchestrator and returns a structured response. Requires Bearer Authentication."
 )
 async def post_chat(
     payload: ChatRequest,
@@ -29,7 +29,7 @@ async def post_chat(
     try:
         # Audit conversation request linked back to device
         logger.info("Chat requested by paired device %s (%s)", device.device_id, device.device_name)
-        response_text = ultron_service.ask_brain(payload.message)
+        response_text = tag_ai_service.ask_brain(payload.message)
 
         return ChatResponse(
             success=True,
@@ -44,8 +44,8 @@ async def post_chat(
             detail={
                 "success": False,
                 "error": {
-                    "code": "ULTRON_CORE_ERROR",
-                    "message": "ULTRON could not process the request."
+                    "code": "TAG_AI_CORE_ERROR",
+                    "message": "Tag AI could not process the request."
                 }
             }
         )

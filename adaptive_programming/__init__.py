@@ -2,7 +2,7 @@
 """
 Adaptive Programming Engine V1 — programming intelligence + controlled self-improvement.
 
-Sits ON TOP of the existing ULTRON architecture:
+Sits ON TOP of the existing Tag AI architecture:
   - Reuses AIBrain for cognition
   - Reuses Planner for task decomposition
   - Reuse ToolOrchestrator/ToolRegistry for execution

@@ -5,7 +5,7 @@ import subprocess
 import shutil
 import psutil
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class SystemService:

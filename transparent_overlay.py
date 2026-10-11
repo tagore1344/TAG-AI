@@ -1,5 +1,5 @@
 # transparent_overlay.py
-# TAG desktop HUD aligned with the Figma control-center design.
+# Tag AI desktop HUD aligned with the Figma control-center design.
 # Keeps the existing update_status(text, state) interface used by the backend.
 
 import math
@@ -21,7 +21,7 @@ from PyQt6.QtWidgets import (
 
 
 class OrbWidget(QWidget):
-    """Animated TAG state orb used by the HUD."""
+    """Animated Tag AI state orb used by the HUD."""
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -102,10 +102,10 @@ class StatusPill(QFrame):
         )
 
 
-class UltronTopOverlay(QMainWindow):
-    """TAG HUD window.
+class TagAITopOverlay(QMainWindow):
+    """Tag AI HUD window.
 
-    Kept under the legacy class name so existing ULTRON imports do not break.
+    Kept under the legacy class name so existing Tag AI imports do not break.
     """
 
     STATE_CONFIG = {
@@ -137,7 +137,7 @@ class UltronTopOverlay(QMainWindow):
 
         self._build_ui()
         self._set_state("idle")
-        print("[OVERLAY] TAG desktop HUD initialized with translucent glass surfaces.")
+        print("[OVERLAY] Tag AI desktop HUD initialized with translucent glass surfaces.")
 
     def _build_ui(self):
         shell = QFrame()
@@ -162,7 +162,7 @@ class UltronTopOverlay(QMainWindow):
         side.setContentsMargins(18, 18, 18, 18)
         side.setSpacing(8)
 
-        brand = QLabel("TAG")
+        brand = QLabel("Tag AI")
         brand.setFont(QFont("Inter", 28, QFont.Weight.Bold))
         side.addWidget(brand)
         subtitle = QLabel("AUTONOMOUS AI")
@@ -209,7 +209,7 @@ class UltronTopOverlay(QMainWindow):
         title_box = QVBoxLayout()
         title = QLabel("Control Center")
         title.setFont(QFont("Inter", 24, QFont.Weight.DemiBold))
-        ready = QLabel("TAG is ready")
+        ready = QLabel("Tag AI is ready")
         ready.setProperty("muted", True)
         ready.setFont(QFont("Inter", 9))
         title_box.addWidget(title)
@@ -247,7 +247,7 @@ class UltronTopOverlay(QMainWindow):
         response.setObjectName("SubPanel")
         response_layout = QVBoxLayout(response)
         response_layout.setContentsMargins(14, 12, 14, 12)
-        tag_label = QLabel("TAG")
+        tag_label = QLabel("Tag AI")
         tag_label.setStyleSheet("color:#35E6FF;")
         tag_label.setFont(QFont("Inter", 9, QFont.Weight.Bold))
         response_layout.addWidget(tag_label)
@@ -329,7 +329,7 @@ class UltronTopOverlay(QMainWindow):
         command_title = QLabel("COMMAND")
         command_title.setProperty("muted", True)
         command_title.setFont(QFont("Inter", 8, QFont.Weight.DemiBold))
-        command_text = QLabel("Ask TAG anything…")
+        command_text = QLabel("Ask Tag AI anything…")
         command_text.setProperty("muted", True)
         command_text.setFont(QFont("Inter", 10))
         command_layout.addWidget(command_title)
@@ -372,6 +372,6 @@ class UltronTopOverlay(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = UltronTopOverlay()
+    window = TagAITopOverlay()
     window.show()
     sys.exit(app.exec())

@@ -1,4 +1,4 @@
-# core/utils.py — Helper utilities for ULTRON AI
+# core/utils.py — Helper utilities for Tag AI
 import os
 import re
 import time
@@ -74,3 +74,61 @@ def write_file_safe(path, content):
         return True
     except Exception:
         return False
+
+def adopt_legacy_path(path: str) -> str:
+    """Use an existing Ultron data file when the Tag AI filename is not there yet."""
+    legacy = path.replace("tag_ai_", "ultron_")
+    if legacy == path or os.path.exists(path) or not os.path.exists(legacy):
+        return path
+    parent = os.path.dirname(path)
+    if parent:
+        os.makedirs(parent, exist_ok=True)
+    try:
+        os.replace(legacy, path)
+    except OSError:
+        return legacy
+    return path
+
+
+_LEGACY_ENV = {
+    "TAG_AI_HOST": "ULTRON_HOST",
+    "TAG_AI_PORT": "ULTRON_PORT",
+    "TAG_AI_ENV": "ULTRON_ENV",
+    "TAG_AI_LOG_LEVEL": "ULTRON_LOG_LEVEL",
+    "TAG_AI_CORS_ORIGINS": "ULTRON_CORS_ORIGINS",
+    "TAG_AI_GEMINI_SDK": "ULTRON_GEMINI_SDK",
+    "TAG_AI_CONSENSUS_MODE": "ULTRON_CONSENSUS_MODE",
+    "TAG_AI_MODEL": "ULTRON_MODEL",
+    "TAG_AI_REASONING_EFFORT": "ULTRON_REASONING_EFFORT",
+    "TAG_AI_USE_ASTRA": "ULTRON_USE_ASTRA",
+    "TAG_AI_WORKSPACE": "ULTRON_WORKSPACE",
+    "TAG_AI_REPO_ROOT": "ULTRON_REPO_ROOT",
+    "TAG_AI_TEST_MODE": "ULTRON_TEST_MODE",
+}
+
+
+def bridge_legacy_env() -> None:
+    """Copy old ULTRON_* settings into TAG_AI_* when the new name is unset."""
+    file_values = {}
+    env_path = os.path.join(os.getcwd(), ".env")
+    if os.path.exists(env_path):
+        try:
+            with open(env_path, encoding="utf-8") as handle:
+                for line in handle:
+                    line = line.strip()
+                    if not line or line.startswith("#") or "=" not in line:
+                        continue
+                    key, value = line.split("=", 1)
+                    file_values[key.strip()] = value.strip().strip('"').strip("'")
+        except OSError:
+            file_values = {}
+    for new, old in _LEGACY_ENV.items():
+        if os.environ.get(new):
+            continue
+        if os.environ.get(old):
+            os.environ[new] = os.environ[old]
+        elif old in file_values and new not in file_values:
+            os.environ[new] = file_values[old]
+
+
+bridge_legacy_env()

@@ -1,4 +1,4 @@
-"""ULTRON agent core: planning, state, routing and verification."""
+"""Tag AI agent core: planning, state, routing and verification."""
 
 from .agent_loop import AgentLoop, AgentResult
 from .model_router import ModelRouter, ModelTarget

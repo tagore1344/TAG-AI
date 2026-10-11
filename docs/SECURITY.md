@@ -1,8 +1,8 @@
-# ULTRON-AI Security Model and Threat Audit
+# Tag AI Security Model and Threat Audit
 
-This document defines the comprehensive threat model, permission configurations, and cryptographic barriers implemented to guard the **ULTRON-AI laptop host** from unauthorized operations or network compromises.
+This document defines the comprehensive threat model, permission configurations, and cryptographic barriers implemented to guard the **Tag AI laptop host** from unauthorized operations or network compromises.
 
-> ⚠️ **CRITICAL DISCLAIMER:** ULTRON-AI is designed strictly for deployment over **private, trusted local area networks (LAN)**. Under no circumstances should the FastAPI server port (`8000`) or WebSockets be exposed directly to the public internet or mapped via unrestricted public router port-forwarding. Public WAN operations must travel through an explicitly authenticated, private virtual private network (such as **Tailscale** or **WireGuard**).
+> ⚠️ **CRITICAL DISCLAIMER:** Tag AI is designed strictly for deployment over **private, trusted local area networks (LAN)**. Under no circumstances should the FastAPI server port (`8000`) or WebSockets be exposed directly to the public internet or mapped via unrestricted public router port-forwarding. Public WAN operations must travel through an explicitly authenticated, private virtual private network (such as **Tailscale** or **WireGuard**).
 
 ---
 
@@ -46,7 +46,7 @@ When communicating from outside your local home Wi-Fi, connection payloads are i
 │  (Tailscale IP)      (WireGuard / AEs)    (Tailscale IP)│
 │                                                │       │
 │                                                ▼       │
-│                                           ULTRON Core  │
+│                                           Tag AI Core  │
 └────────────────────────────────────────────────────────┘
 ```
 

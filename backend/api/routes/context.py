@@ -9,14 +9,14 @@ from core.context.memory_manager import memory_manager
 from backend.security.authorization import require_system_status_permission, require_safe_commands_permission
 from backend.security.authentication import AuthenticatedDevice
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 router = APIRouter()
 
 
 @router.get(
     "/context/self-model",
     status_code=status.HTTP_200_OK,
-    summary="Get ULTRON Self Model",
+    summary="Get Tag AI Self Model",
     description="Returns the sanitized real-time state, capabilities, and resource telemetry of the agent. Requires Bearer Authentication."
 )
 async def get_self_model(
@@ -39,7 +39,7 @@ async def get_self_model(
 @router.get(
     "/context/world-model",
     status_code=status.HTTP_200_OK,
-    summary="Get ULTRON World Model",
+    summary="Get Tag AI World Model",
     description="Returns the real-time scanned external environment context. Requires Bearer Authentication."
 )
 async def get_world_model(

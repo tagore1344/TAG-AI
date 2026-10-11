@@ -2,7 +2,7 @@
 import logging
 from typing import Dict, Any
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class EvolutionManager:

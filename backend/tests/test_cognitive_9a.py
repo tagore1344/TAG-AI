@@ -68,7 +68,7 @@ def test_structured_opinion_creation():
 
 def test_fact_inference_hypothesis_separation_in_engine():
     """Verify that the JudgmentEngine separates and compiles real cognitive sections."""
-    opinion = judgment_engine.generate_opinion("Should I use tiny.en or base.en for ULTRON?")
+    opinion = judgment_engine.generate_opinion("Should I use tiny.en or base.en for Tag AI?")
 
     assert opinion is not None
     assert len(opinion.facts) >= 2
@@ -163,7 +163,7 @@ async def test_tool_registry_diagnostics():
 
     # 2. Trigger a goal to generate an opinion
     with patch.object(tool_orchestrator, "execute_action", return_value="success"):
-        await agent_runtime.execute_goal("Should I use tiny.en or base.en for ULTRON?")
+        await agent_runtime.execute_goal("Should I use tiny.en or base.en for Tag AI?")
 
     # 3. Test get_opinion now returns serialized opinion
     res_opinion = await registry.execute({"intent": "agent.get_opinion"})

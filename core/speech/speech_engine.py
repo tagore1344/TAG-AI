@@ -24,7 +24,7 @@ class SpeechEngine:
                 return
             except Exception as e:
                 print(f"[SPEECH] speak error: {e}")
-        print(f"[ULTRON TTS]: {text}")
+        print(f"[Tag AI TTS]: {text}")
 
     def listen(self, timeout=7):
         """Listen for speech and return the transcribed text."""

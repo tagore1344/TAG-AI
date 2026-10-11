@@ -1,4 +1,7 @@
 import os
+
+from core.utils import bridge_legacy_env
+bridge_legacy_env()
 import warnings
 
 try:
@@ -66,7 +69,7 @@ def _build_model(api_key):
     """Selects the backend: explicit override -> preferred new SDK -> legacy fallback."""
     global _backend
 
-    forced = (os.getenv("ULTRON_GEMINI_SDK") or "").strip().lower()
+    forced = (os.getenv("TAG_AI_GEMINI_SDK") or "").strip().lower()
     if forced in ("genai", "legacy"):
         _backend = forced
         return _build_for_backend(api_key, forced)

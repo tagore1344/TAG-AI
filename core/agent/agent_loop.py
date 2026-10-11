@@ -1,4 +1,4 @@
-"""Model-agnostic agent execution loop for ULTRON."""
+"""Model-agnostic agent execution loop for Tag AI."""
 from __future__ import annotations
 
 from dataclasses import dataclass

@@ -9,7 +9,7 @@ import uuid
 from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
-logger = logging.getLogger("ultron-adaptive")
+logger = logging.getLogger("tag-ai-adaptive")
 
 try:
     from core.context.memory_manager import memory_manager

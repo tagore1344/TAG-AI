@@ -9,7 +9,7 @@ from backend.services.confirmation_service import confirmation_service
 from backend.database.device_repository import device_repo
 from core.tools.tool_registry import ToolRegistry
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class CommandService:
@@ -71,8 +71,6 @@ class CommandService:
         elif cmd == "open_website":
             target = parameters.get("url", "")
             return "app.open", target
-<<<<<<< HEAD
-=======
         elif cmd == "shutdown":
             return "system.shutdown", ""
         elif cmd == "restart":
@@ -83,7 +81,6 @@ class CommandService:
             return "system.lock_screen", ""
         elif cmd == "cancel_shutdown":
             return "system.cancel_shutdown", ""
->>>>>>> feature/astra-class-agent-core
 
         return "chat", ""
 
@@ -129,11 +126,7 @@ class CommandService:
         # 4. Confirmation Required Flow
         if security_level == SecurityLevel.CONFIRMATION_REQUIRED:
             logger.info("COMMAND_PENDING_CONFIRMATION %s - Awaiting client response...", command_id)
-<<<<<<< HEAD
-            
-=======
 
->>>>>>> feature/astra-class-agent-core
             # Non-blocking async wait for mobile approval
             approved, reason = await confirmation_service.create_and_await_confirmation(
                 command_id=command_id,
@@ -142,11 +135,7 @@ class CommandService:
                 parameters=parameters,
                 timeout_seconds=timeout_seconds
             )
-<<<<<<< HEAD
-            
-=======
 
->>>>>>> feature/astra-class-agent-core
             if not approved:
                 logger.warning("COMMAND_REJECTED %s - Confirmation failed: %s", command_id, reason)
                 return {
@@ -158,11 +147,7 @@ class CommandService:
                         "message": f"Command confirmation was not approved. Reason: {reason}."
                     }
                 }
-<<<<<<< HEAD
-                
-=======
 
->>>>>>> feature/astra-class-agent-core
             # 5. RE-VALIDATION BEFORE EXECUTION (Critical Safety Requirement)
             device_data = device_repo.get_device_by_id(device_id)
             if not device_data or device_data.get("revoked", False):
@@ -176,11 +161,7 @@ class CommandService:
                         "message": "Access denied. Device revoked during confirmation window."
                     }
                 }
-<<<<<<< HEAD
-            
-=======
 
->>>>>>> feature/astra-class-agent-core
             logger.info("COMMAND_AUTHORIZED %s - Post-confirmation validation checks succeeded.", command_id)
         else:
             logger.info("COMMAND_AUTHORIZED %s", command_id)
@@ -193,7 +174,7 @@ class CommandService:
                 "status": "rejected",
                 "error": {
                     "code": "TOOL_REGISTRY_OFFLINE",
-                    "message": "Canonical ULTRON Tool Registry is offline."
+                    "message": "Canonical Tag AI Tool Registry is offline."
                 }
             }
 
@@ -207,11 +188,7 @@ class CommandService:
                 "intent": intent,
                 "target": target
             })
-<<<<<<< HEAD
-            
-=======
 
->>>>>>> feature/astra-class-agent-core
             logger.info("COMMAND_COMPLETED %s", command_id)
             return {
                 "success": True,

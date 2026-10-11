@@ -12,7 +12,7 @@ from backend.api.websocket.connection_manager import manager
 from backend.api.routes.auth import DeviceModel
 from core.context.world_model import world_model
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 router = APIRouter()
 
 

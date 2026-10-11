@@ -4,17 +4,12 @@ from fastapi import APIRouter, Depends, status
 
 from backend.schemas.system import SystemStatusResponse
 from backend.services.system_service import system_service
-<<<<<<< HEAD
-from backend.security.authorization import require_system_status_permission
-from backend.security.authentication import AuthenticatedDevice
-=======
 from core.update.version_manager import version_manager
 from core.update.update_manager import update_manager
 from backend.security.authorization import require_system_status_permission
 from backend.security.authentication import get_current_device, AuthenticatedDevice
->>>>>>> feature/astra-class-agent-core
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 router = APIRouter()
 
 
@@ -31,8 +26,6 @@ async def get_system_status(
     logger.info("Collecting hardware telemetry metrics requested by paired client: %s (%s)", device.device_id, device.device_name)
     telemetry_data = system_service.get_telemetry()
     return SystemStatusResponse(**telemetry_data)
-<<<<<<< HEAD
-=======
 
 
 @router.get(
@@ -62,4 +55,3 @@ async def get_update_status(
 ):
     logger.info("Update subsystem status logs queried by paired device %s (%s)", device.device_id, device.device_name)
     return update_manager.get_status()
->>>>>>> feature/astra-class-agent-core

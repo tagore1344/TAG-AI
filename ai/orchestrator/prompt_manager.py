@@ -3,7 +3,7 @@ class PromptManager:
     def prepare_prompt(self, user_prompt):
 
         system_prompt = """
-You are ULTRON AI.
+You are Tag AI.
 
 You are an advanced AI assistant.
 

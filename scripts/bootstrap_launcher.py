@@ -25,7 +25,7 @@ def load_active_release_path() -> str:
 
 
 def main():
-    print("[BOOTSTRAP] Launching ULTRON-AI process coordinator...")
+    print("[BOOTSTRAP] Launching Tag AI process coordinator...")
 
     release_path = load_active_release_path()
     print(f"[BOOTSTRAP] Active release path resolved: '{release_path}'")
@@ -49,7 +49,7 @@ def main():
         try:
             resp = requests.get("http://127.0.0.1:8000/api/v1/health", timeout=2)
             if resp.status_code == 200:
-                print("[BOOTSTRAP] ✅ Health check passed. ULTRON is active and serving clients.")
+                print("[BOOTSTRAP] ✅ Health check passed. Tag AI is active and serving clients.")
                 proc.wait()
                 return
         except Exception as e:

@@ -1,4 +1,7 @@
 # backend/config.py
+
+from core.utils import bridge_legacy_env
+bridge_legacy_env()
 import os
 import json
 from typing import List, Union, Any
@@ -7,7 +10,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class BackendSettings(BaseSettings):
-    """Configuration settings for the ULTRON-AI FastAPI Backend."""
+    """Configuration settings for the Tag AI FastAPI Backend."""
 
     host: str = "0.0.0.0"
     port: int = 8000
@@ -16,7 +19,7 @@ class BackendSettings(BaseSettings):
     cors_origins: Union[List[str], str] = []
 
     # Secure metadata
-    app_title: str = "ULTRON-AI API"
+    app_title: str = "Tag AI API"
     app_description: str = "Connected AI assistant gateway and remote controller endpoint."
     app_version: str = "1.0.0"
 
@@ -36,7 +39,7 @@ class BackendSettings(BaseSettings):
 
     # Load from .env file securely
     model_config = SettingsConfigDict(
-        env_prefix="ultron_",
+        env_prefix="tag_ai_",
         env_file=".env",
         env_file_encoding="utf-8",
         extra="ignore"

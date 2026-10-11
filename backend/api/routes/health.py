@@ -16,6 +16,6 @@ router = APIRouter()
 async def get_health() -> HealthResponse:
     return HealthResponse(
         status="healthy",
-        service="ultron-api",
+        service="tag-ai-api",
         version=settings.app_version
     )

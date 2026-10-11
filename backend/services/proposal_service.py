@@ -11,7 +11,7 @@ from backend.services.confirmation_service import confirmation_service
 from backend.database.device_repository import device_repo
 from core.agent.proposal_manager import proposal_manager, RISK_SAFE, RISK_HIGH
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class ProposalService:

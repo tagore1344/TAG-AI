@@ -2,6 +2,7 @@
 import ollama
 import json
 import os
+from core.utils import adopt_legacy_path
 import time
 from datetime import datetime
 from config import CONFIG
@@ -25,8 +26,8 @@ class AIBrain:
             print("[BRAIN]    Running in fallback mode")
 
     def _load_memory(self):
-        # ULTRON memory with one-time migration from the legacy jarvis_memory.json
-        mem_file = "ultron_memory.json"
+        # Tag AI memory with one-time migration from the legacy jarvis_memory.json
+        mem_file = adopt_legacy_path("tag_ai_memory.json")
         legacy_file = "jarvis_memory.json"
         if os.path.exists(mem_file):
             try:
@@ -45,7 +46,7 @@ class AIBrain:
         return {"facts": [], "preferences": {}}
 
     def _save_memory(self):
-        mem_file = "ultron_memory.json"
+        mem_file = "tag_ai_memory.json"
         try:
             with open(mem_file, "w") as f:
                 json.dump(self.memory, f, indent=2)
@@ -85,7 +86,7 @@ class AIBrain:
             memory_context = self.get_memory_context()
 
             if is_telugu:
-                system_prompt = f"""You are ULTRON, an advanced personal AI assistant. 
+                system_prompt = f"""You are Tag AI, an advanced personal AI assistant. 
 Current time: {now}
 Date: {datetime.now().strftime('%A, %B %d, %Y')}
 
@@ -100,12 +101,12 @@ You are:
 - A trusted AI companion, not just a tool
 
 Keep responses to 2-4 sentences unless asked for more.
-Never say you are a language model or AI. You are ULTRON.
+Never say you are a language model or AI. You are Tag AI.
 
 **IMPORTANT:** The user is speaking Telugu. Respond in Telugu.
 """
             else:
-                system_prompt = f"""You are ULTRON, an advanced personal AI assistant. 
+                system_prompt = f"""You are Tag AI, an advanced personal AI assistant. 
 Current time: {now}
 Date: {datetime.now().strftime('%A, %B %d, %Y')}
 
@@ -120,7 +121,7 @@ You are:
 - A trusted AI companion, not just a tool
 
 Keep responses to 2-4 sentences unless asked for more.
-Never say you are a language model or AI. You are ULTRON.
+Never say you are a language model or AI. You are Tag AI.
 
 The user is speaking English. Respond in English.
 """

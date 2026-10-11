@@ -1,6 +1,6 @@
-# ULTRON-AI Automated & Manual Testing Specification
+# Tag AI Automated & Manual Testing Specification
 
-This document provides execution guidelines, commands, automated suites, and manual verification steps for the **ULTRON-AI Gateway Ecosystem**.
+This document provides execution guidelines, commands, automated suites, and manual verification steps for the **Tag AI Gateway Ecosystem**.
 
 ---
 

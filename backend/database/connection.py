@@ -1,11 +1,12 @@
 # backend/database/connection.py
 import os
+from core.utils import adopt_legacy_path
 import sqlite3
 import logging
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 DB_DIR = "backend/data"
-DB_PATH = os.path.join(DB_DIR, "ultron_devices.db")
+DB_PATH = adopt_legacy_path(os.path.join(DB_DIR, "tag_ai_devices.db"))
 
 
 def get_db_connection() -> sqlite3.Connection:
@@ -63,8 +64,6 @@ def initialize_database():
     """)
 
     conn.commit()
-<<<<<<< HEAD
-=======
 
     # Schema Migrations: Add public_key and capabilities columns if missing
     try:
@@ -74,6 +73,5 @@ def initialize_database():
     except sqlite3.OperationalError:
         pass # Already migrated
 
->>>>>>> feature/astra-class-agent-core
     conn.close()
     logger.info("SQLite device database successfully initialized at: %s", DB_PATH)

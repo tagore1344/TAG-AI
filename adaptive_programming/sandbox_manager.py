@@ -5,7 +5,7 @@ Sandbox manager — isolated evaluation of proposed self-improvements.
 Creates a real filesystem copy of the adaptive_programming package, applies
 candidate patches ONLY inside the sandbox, and executes the benchmark suite
 in a subprocess whose import path resolves to the sandboxed package while
-ULTRON_REPO_ROOT keeps repository-targeting benchmarks pointed at the real
+TAG_AI_REPO_ROOT keeps repository-targeting benchmarks pointed at the real
 repository. Production code is never touched during an experiment.
 """
 import json
@@ -19,7 +19,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional
 
-logger = logging.getLogger("ultron-adaptive")
+logger = logging.getLogger("tag-ai-adaptive")
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SANDBOX_BASE = REPO_ROOT / "backend" / "data" / "adaptive_programming" / "sandboxes"
@@ -84,12 +84,12 @@ class SandboxManager:
 
         With no sandbox: measures the BASELINE (production package).
         With a sandbox: PYTHONPATH resolves to the sandbox copy while
-        ULTRON_REPO_ROOT keeps repository-targeting benchmarks pointed at
+        TAG_AI_REPO_ROOT keeps repository-targeting benchmarks pointed at
         the real repository — production code is never imported or mutated.
         Returns {"success": bool, "results": [...], "mean_score": float}.
         """
         env = os.environ.copy()
-        env["ULTRON_REPO_ROOT"] = str(REPO_ROOT)
+        env["TAG_AI_REPO_ROOT"] = str(REPO_ROOT)
         if sandbox is not None and not sandbox.destroyed:
             env["PYTHONPATH"] = str(sandbox.path.parent)
 

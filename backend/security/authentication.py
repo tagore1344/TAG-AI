@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field
 from backend.database.device_repository import device_repo
 from backend.security.token_service import token_service
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 security_scheme = HTTPBearer(auto_error=True)
 
 

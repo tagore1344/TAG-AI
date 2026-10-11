@@ -1,1 +1,1 @@
-# backend.services package - system, ultron, and command gateway managers
+# backend.services package - system, tag_ai, and command gateway managers

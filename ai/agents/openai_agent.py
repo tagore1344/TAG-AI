@@ -1,7 +1,10 @@
-"""OpenAI provider adapter for ULTRON."""
+"""OpenAI provider adapter for Tag AI."""
 from __future__ import annotations
 
 import os
+
+from core.utils import bridge_legacy_env
+bridge_legacy_env()
 
 try:
     from dotenv import load_dotenv
@@ -44,9 +47,9 @@ def ask_openai(prompt: str) -> str:
 
     try:
         response = client.responses.create(
-            model=os.getenv("ULTRON_MODEL", "gpt-6-astra"),
-            reasoning={"effort": os.getenv("ULTRON_REASONING_EFFORT", "high")},
-            instructions="You are ULTRON AI, an advanced, precise, tool-aware assistant.",
+            model=os.getenv("TAG_AI_MODEL", "gpt-6-astra"),
+            reasoning={"effort": os.getenv("TAG_AI_REASONING_EFFORT", "high")},
+            instructions="You are Tag AI, an advanced, precise, tool-aware assistant.",
             input=prompt,
         )
         return response.output_text

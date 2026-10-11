@@ -1,14 +1,14 @@
 @echo off
-title TAG AI - INSTALLER
+title Tag AI - INSTALLER
 color 0B
 echo.
 echo  ========================================
-echo   TAG AI - WINDOWS INSTALLER
+echo   Tag AI - WINDOWS INSTALLER
 echo  ========================================
 echo.
 
 cd /d "%~dp0"
-set ULTRON_PATH=%~dp0
+set TAG_AI_PATH=%~dp0
 
 echo  [1/4] Checking Python...
 python --version >nul 2>&1
@@ -34,23 +34,23 @@ if not exist ".env" (
     echo  [3/4] .env already exists.
 )
 
-echo  [4/4] Adding TAG to Windows Startup...
-reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "ULTRON-AI" /t REG_SZ /d "cmd /c start /B /MIN pythonw \"%ULTRON_PATH%run_ultron.py\"" /f >nul
-echo  [4/4] TAG will now start automatically on Windows boot!
+echo  [4/4] Adding Tag AI to Windows Startup...
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "Tag AI" /t REG_SZ /d "cmd /c start /B /MIN pythonw \"%TAG_AI_PATH%run_tag_ai.py\"" /f >nul
+echo  [4/4] Tag AI will now start automatically on Windows boot!
 
 echo.
 echo  ========================================
 echo   INSTALLATION COMPLETE!
 echo  ========================================
 echo.
-echo  - Double-click ULTRON.bat to start TAG manually anytime
-echo  - Or restart your PC - TAG starts automatically!
+echo  - Double-click TAG-AI.bat to start Tag AI manually anytime
+echo  - Or restart your PC - Tag AI starts automatically!
 echo  - Say your wake word to activate
 echo  - HUD appears in the top area of your screen
 echo.
-echo  Press any key to launch TAG now...
+echo  Press any key to launch Tag AI now...
 pause >nul
 
-start "" /B pythonw run_ultron.py
-echo  TAG is running!
+start "" /B pythonw run_tag_ai.py
+echo  Tag AI is running!
 timeout /t 3 >nul

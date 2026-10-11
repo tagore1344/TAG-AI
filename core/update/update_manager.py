@@ -14,7 +14,7 @@ from core.update.activation_manager import activation_manager
 from core.update.rollback_manager import rollback_manager
 from backend.security.token_service import token_service
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class UpdateManager:

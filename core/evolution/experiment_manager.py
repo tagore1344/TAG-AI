@@ -8,7 +8,7 @@ from core.evolution.evolution_memory import evo_memory_9c1
 from core.evolution.evolution_policy import policy_9c1
 from core.context.memory_manager import memory_manager
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class ExperimentManager:

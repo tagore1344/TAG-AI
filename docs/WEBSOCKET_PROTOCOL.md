@@ -1,12 +1,12 @@
-# ULTRON-AI WebSocket Protocol Guide
+# Tag AI WebSocket Protocol Guide
 
-This document defines the real-time event, telemetry, and transactional confirmation protocols managed over WebSockets in the **ULTRON-AI** connected gateway.
+This document defines the real-time event, telemetry, and transactional confirmation protocols managed over WebSockets in the **Tag AI** connected gateway.
 
 ---
 
 ## 🔒 1. Handshake & Security Authentication
 
-To prevent credentials leaking in reverse proxy logs, diagnostics, or browser histories, **ULTRON-AI strictly blocks long-lived Bearer tokens in raw query strings (`?token=...`)**.
+To prevent credentials leaking in reverse proxy logs, diagnostics, or browser histories, **Tag AI strictly blocks long-lived Bearer tokens in raw query strings (`?token=...`)**.
 
 Instead, clients must use one of these two secure handshake methods:
 

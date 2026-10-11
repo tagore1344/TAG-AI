@@ -14,11 +14,7 @@ def ws_authenticated_ticket():
     """Helper fixture to pair a device and retrieve a valid WebSocket handshake ticket."""
     session_response = client.post("/api/v1/auth/pairing-session")
     pairing_pin = session_response.json()["pairing_code"]
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> feature/astra-class-agent-core
     pair_resp = client.post("/api/v1/auth/pair", json={
         "pairing_code": pairing_pin,
         "device_name": "Health WS Test Device",
@@ -26,11 +22,7 @@ def ws_authenticated_ticket():
     })
     token = pair_resp.json()["access_token"]
     auth_headers = {"Authorization": f"Bearer {token}"}
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> feature/astra-class-agent-core
     ticket_resp = client.post("/api/v1/auth/ws-ticket", headers=auth_headers)
     return ticket_resp.json()["ticket"]
 
@@ -50,16 +42,12 @@ def test_3_health_response_contents():
     """Verify that GET /api/v1/health returns standard Pydantic HealthResponse schemas."""
     response = client.get("/api/v1/health")
     data = response.json()
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> feature/astra-class-agent-core
     assert "status" in data
     assert "service" in data
     assert "version" in data
     assert data["status"] == "healthy"
-    assert data["service"] == "ultron-api"
+    assert data["service"] == "tag-ai-api"
 
 
 def test_4_invalid_route_returns_404():
@@ -77,11 +65,7 @@ def test_5_unhandled_error_returns_clean_500():
 
     response = client.get("/api/v1/test_error")
     assert response.status_code == 500
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> feature/astra-class-agent-core
     data = response.json()
     assert data["success"] is False
     assert "error" in data
@@ -115,17 +99,10 @@ def test_7_websocket_ping_pong_echo(ws_authenticated_ticket):
     with client.websocket_connect(f"/api/v1/ws?ticket={fresh_ticket}") as websocket:
         # Clear handshake packet
         _ = websocket.receive_json()
-<<<<<<< HEAD
-        
-        # Send a secure PING event
-        websocket.send_json({"event": "PING"})
-        
-=======
 
         # Send a secure PING event
         websocket.send_json({"event": "PING"})
 
->>>>>>> feature/astra-class-agent-core
         # Receive PONG reply
         response = websocket.receive_json()
         assert response["event"] == "PONG"

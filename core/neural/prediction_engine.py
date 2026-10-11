@@ -5,7 +5,7 @@ from typing import Dict, Any, List
 from core.neural.neural_memory import neural_memory
 from core.neural.neural_schema import NeuralNodeModel, NeuralEdgeModel
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class PredictionEngine:

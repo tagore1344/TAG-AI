@@ -1,14 +1,15 @@
 # ai/memory/conversation_memory.py — Persistent conversation memory
 import json
 import os
+from core.utils import adopt_legacy_path
 import datetime
 
 
 class ConversationMemory:
     """Stores conversation history in a JSON file."""
 
-    def __init__(self, memory_file="ultron_memory.json"):
-        self.memory_file = memory_file
+    def __init__(self, memory_file="tag_ai_memory.json"):
+        self.memory_file = adopt_legacy_path(memory_file)
         self.memory = self.load_memory()
 
     def load_memory(self):

@@ -21,7 +21,7 @@ from core.context.self_model import self_model
 from core.context.world_model import world_model
 from core.context.long_term_goals import goal_manager_9b
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class AgentRuntime:
@@ -81,7 +81,7 @@ class AgentRuntime:
 
         self.continuous_running = True
         self.continuous_task = asyncio.create_task(self._continuous_loop_runner())
-        logger.info("ULTRON Phase 10.1 Continuous Cognitive Loop started successfully.")
+        logger.info("Tag AI Phase 10.1 Continuous Cognitive Loop started successfully.")
         return True
 
     def stop_continuous_loop(self):
@@ -95,7 +95,7 @@ class AgentRuntime:
             self.continuous_task = None
 
         self.state = "IDLE"
-        logger.info("ULTRON Phase 10.1 Continuous Cognitive Loop gracefully shutdown.")
+        logger.info("Tag AI Phase 10.1 Continuous Cognitive Loop gracefully shutdown.")
 
     async def _continuous_loop_runner(self):
         """Asynchronously executes the full 23-step continuous cognitive loop lifecycle statefully."""

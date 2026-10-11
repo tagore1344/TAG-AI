@@ -1,4 +1,4 @@
-# core/config.py — Canonical TAG configuration loader
+# core/config.py — Canonical Tag AI configuration loader
 from __future__ import annotations
 
 import copy

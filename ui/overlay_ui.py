@@ -407,7 +407,7 @@ class AssistantOverlay:
         ctk.set_appearance_mode("dark")
 
         self.root = ctk.CTk()
-        self.root.title("ULTRON")
+        self.root.title("Tag AI")
         self.root.attributes('-topmost', True)
         
         # ═══ TRANSPARENT WINDOW ═══

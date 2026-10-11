@@ -1,4 +1,4 @@
-# app_controller.py — TAG app controller
+# app_controller.py — Tag AI app controller
 import subprocess
 import os
 import glob

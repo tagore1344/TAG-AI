@@ -1,15 +1,16 @@
 # core/context/long_term_goals.py
 import os
+from core.utils import adopt_legacy_path
 import json
 import sqlite3
 import datetime
 import logging
 from typing import List, Dict, Any, Optional
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 DB_DIR = "backend/data"
-DB_PATH = os.path.join(DB_DIR, "ultron_context.db")
+DB_PATH = adopt_legacy_path(os.path.join(DB_DIR, "tag_ai_context.db"))
 
 
 class LongTermGoalManager:

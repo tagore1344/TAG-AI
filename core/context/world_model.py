@@ -5,7 +5,9 @@ import datetime
 import logging
 from typing import Dict, Any, List
 
-logger = logging.getLogger("ultron-api")
+from core.utils import adopt_legacy_path
+
+logger = logging.getLogger("tag-ai-api")
 
 
 class WorldModel:
@@ -126,7 +128,7 @@ class WorldModel:
             "client_telemetry": self.client_telemetry,
             "filesystem_state": {
                 "workspace_root": os.getcwd(),
-                "context_db_exists": os.path.exists("backend/data/ultron_context.db")
+                "context_db_exists": os.path.exists(adopt_legacy_path("backend/data/tag_ai_context.db"))
             },
             "last_updated": self.last_updated.isoformat() + "Z",
             "is_stale": self.is_stale()

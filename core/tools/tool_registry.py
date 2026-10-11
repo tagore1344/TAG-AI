@@ -22,9 +22,7 @@ try:
 except Exception:
     AppController = None
 
-<<<<<<< HEAD
-=======
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class _SilentSpeech:
@@ -35,7 +33,6 @@ class _SilentSpeech:
     def speak(self, text: str, *args, **kwargs) -> None:
         logger.debug("[silent-speech] %s", text)
 
->>>>>>> feature/astra-class-agent-core
 
 class ToolRegistry:
     """Executes tool intents detected by the IntentRouter."""
@@ -229,8 +226,6 @@ class ToolRegistry:
         if intent == "app.open":
             target_lower = target.lower().strip()
 
-<<<<<<< HEAD
-=======
             # 0. Config-backed voice alias mapping (populated by approved Phase 9E proposals)
             try:
                 from core.config import load_config
@@ -243,7 +238,6 @@ class ToolRegistry:
             except Exception as e:
                 logger.debug("Voice alias lookup bypassed: %s", e)
 
->>>>>>> feature/astra-class-agent-core
             # Safe bounded alias mapping for voice transcription typos
             if target_lower == "chroome":
                 target_lower = "chrome"
@@ -254,18 +248,6 @@ class ToolRegistry:
             if target_lower in ("youtube", "instagram", "facebook", "twitter", "google", "github"):
                 if self.system:
                     if target_lower == "youtube":
-<<<<<<< HEAD
-                        return self.system.open_website("www.youtube.com")
-                    elif target_lower == "instagram":
-                        return self.system.open_website("www.instagram.com")
-                    else:
-                        return self.system.open_website(f"www.{target_lower}.com")
-                return "System control unavailable."
-
-            # 2. Use AppController to launch native desktop applications
-            if self.apps:
-                success = self.apps.open_app(target_lower)
-=======
                         await asyncio.to_thread(self.system.open_website, "www.youtube.com")
                     elif target_lower == "instagram":
                         await asyncio.to_thread(self.system.open_website, "www.instagram.com")
@@ -277,17 +259,12 @@ class ToolRegistry:
             # 2. Use AppController to launch native desktop applications (offloaded to a thread)
             if self.apps:
                 success = await asyncio.to_thread(self.apps.open_app, target_lower)
->>>>>>> feature/astra-class-agent-core
                 if success:
                     return f"Successfully opened {target_lower}."
                 else:
                     # Graceful browser fallback for WhatsApp if not installed locally
                     if target_lower == "whatsapp" and self.system:
-<<<<<<< HEAD
-                        self.system.open_website("web.whatsapp.com")
-=======
                         await asyncio.to_thread(self.system.open_website, "web.whatsapp.com")
->>>>>>> feature/astra-class-agent-core
                         return "Local WhatsApp is not installed. Opened WhatsApp Web in your browser instead."
                     return f"Application {target_lower} not found or failed to open."
             return "App launcher unavailable."
@@ -302,8 +279,6 @@ class ToolRegistry:
                 return self.system.youtube_search(target)
             return "YouTube search unavailable."
 
-<<<<<<< HEAD
-=======
         # ==============================================================================
         # POWER COMMANDS (HIGH_RISK — enforced upstream by command_service confirmation gate)
         # Async variants offload blocking OS calls off the event loop.
@@ -358,5 +333,4 @@ class ToolRegistry:
                 await asyncio.to_thread(fn)
             return "Shutdown cancelled."
 
->>>>>>> feature/astra-class-agent-core
         return f"Unknown tool intent: {intent}"

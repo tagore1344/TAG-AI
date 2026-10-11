@@ -1,4 +1,4 @@
-# wake_word_advanced.py — TAG wake detector with robust fuzzy matching
+# wake_word_advanced.py — Tag AI wake detector with robust fuzzy matching
 
 import difflib
 import threading
@@ -25,7 +25,7 @@ class AdvancedWakeWordDetector:
             "ok tag",
             "hi tag",
         ]
-        # Common Whisper transcription variants for the short wake word "TAG".
+        # Common Whisper transcription variants for the short wake word "Tag AI".
         self.wake_aliases = {
             "tag", "taag", "tagg", "teg", "tig", "täg", "tang", "tak"
         }
@@ -35,7 +35,7 @@ class AdvancedWakeWordDetector:
         self.input_device_index = None
         self._stream = None
 
-        print("[VOICE] TAG wake listener started")
+        print("[VOICE] Tag AI wake listener started")
         self._find_microphone()
         self._load_model()
 
@@ -66,7 +66,7 @@ class AdvancedWakeWordDetector:
             device="cpu",
             compute_type="int8"
         )
-        print("[WAKE] ✅ TAG wake detector ready")
+        print("[WAKE] ✅ Tag AI wake detector ready")
 
     def _is_wake_word(self, text):
         text = " ".join(text.lower().strip().split())
@@ -79,7 +79,7 @@ class AdvancedWakeWordDetector:
                 return True
 
         # Fuzzy single-token matching handles Whisper variants such as
-        # "teg", "tang" or "taag" without treating ordinary long words as TAG.
+        # "teg", "tang" or "taag" without treating ordinary long words as Tag AI.
         for token in text.split():
             token = token.strip(".,!?;:'\"")
             if token in self.wake_aliases:
@@ -148,7 +148,7 @@ class AdvancedWakeWordDetector:
                 if text:
                     print(f"[WAKE HEARD] {text}")
                     if self._is_wake_word(text):
-                        print("[VOICE] TAG wake word detected")
+                        print("[VOICE] Tag AI wake word detected")
                         self.suspend()
                         threading.Thread(target=self.callback, daemon=True).start()
                         break
@@ -176,13 +176,13 @@ class AdvancedWakeWordDetector:
             self.audio = None
 
     def suspend(self):
-        print("[VOICE] TAG wake listener suspended")
+        print("[VOICE] Tag AI wake listener suspended")
         self.is_running = False
         self._cleanup_stream()
         mic_broker.release("AdvancedWakeWordDetector")
 
     def resume(self):
-        print("[VOICE] TAG wake listener resumed")
+        print("[VOICE] Tag AI wake listener resumed")
         self.start()
 
     def start(self):

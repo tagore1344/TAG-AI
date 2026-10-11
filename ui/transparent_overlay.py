@@ -4,7 +4,7 @@ from PyQt6.QtCore import Qt, QTimer, pyqtSlot
 from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget, QGraphicsDropShadowEffect
 from PyQt6.QtGui import QFont, QColor
 
-class UltronTopOverlay(QMainWindow):
+class TagAITopOverlay(QMainWindow):
     def __init__(self):
         super().__init__()
         
@@ -28,7 +28,7 @@ class UltronTopOverlay(QMainWindow):
         self.layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
         # Status Label Configuration
-        self.status_label = QLabel("ULTRON: SYSTEM IDLE", self)
+        self.status_label = QLabel("Tag AI: SYSTEM IDLE", self)
         self.status_label.setFont(QFont("Consolas", 12, QFont.Weight.Bold))
         
         # Neon Accent Styling matching color #00d4ff
@@ -61,7 +61,7 @@ class UltronTopOverlay(QMainWindow):
         Explicitly marked as a pyqtSlot to receive cross-thread strings
         from assistant_with_brain.py safely without any errors.
         """
-        self.status_label.setText(f"ULTRON: {text.upper()}")
+        self.status_label.setText(f"Tag AI: {text.upper()}")
         
         if state == "listening":
             self.status_label.setStyleSheet("""

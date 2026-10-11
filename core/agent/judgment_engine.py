@@ -2,11 +2,11 @@
 import logging
 from typing import List, Dict, Any, Optional
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class Opinion:
-    """Represents a stateful, calibrated, and evidence-based opinion formulated by ULTRON."""
+    """Represents a stateful, calibrated, and evidence-based opinion formulated by Tag AI."""
 
     def __init__(
         self,

@@ -4,7 +4,7 @@ import logging
 import time
 from typing import Dict, Any, List, Optional
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class MetaReasoningRecord:
@@ -46,7 +46,7 @@ class MetaReasoningRecord:
 
 
 class MetaReasoningEngine:
-    """Evaluates the quality of ULTRON's own plans, judgments, and predictions, enforcing recursion limits."""
+    """Evaluates the quality of Tag AI's own plans, judgments, and predictions, enforcing recursion limits."""
 
     def __init__(self):
         self.records: List[MetaReasoningRecord] = []

@@ -1,4 +1,4 @@
-"""Async agent loop that integrates ULTRON's brain, tools, and planner."""
+"""Async agent loop that integrates Tag AI's brain, tools, and planner."""
 from __future__ import annotations
 
 from typing import Any, Optional
@@ -52,7 +52,7 @@ class AsyncAgentLoop:
                 return text, state
             except Exception as exc:
                 state.fail(str(exc))
-                return "ULTRON stopped after an agent execution failure: " + str(exc), state
+                return "Tag AI stopped after an agent execution failure: " + str(exc), state
 
         # Compatibility fallback for environments without the autonomous brain.
         outputs: list[str] = []
@@ -75,10 +75,10 @@ class AsyncAgentLoop:
             except Exception as exc:
                 state.record_result(str(exc), False)
                 state.fail(str(exc))
-                return "ULTRON stopped after an execution failure: " + str(exc), state
+                return "Tag AI stopped after an execution failure: " + str(exc), state
 
         state.status = "completed"
-        return outputs[-1] if outputs else "ULTRON completed the task.", state
+        return outputs[-1] if outputs else "Tag AI completed the task.", state
 
 
 async def _maybe_await(value: Any) -> Any:

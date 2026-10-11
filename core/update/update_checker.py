@@ -11,7 +11,7 @@ try:
 except ImportError:
     CRYPTOGRAPHY_OK = False
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 PUBLIC_KEY_FILE = "update_public_key.pem"
 
 
@@ -64,7 +64,7 @@ class UpdateChecker:
 
     def validate_manifest_meta(self, manifest: dict) -> bool:
         """Validate target repository, branch context, and version compliance."""
-        approved_repo = "tagore1344/ULTRON-AI"
+        approved_repo = "tagore1344/Tag AI"
         approved_branch = "arena/019fef42-ultron-ai"
 
         target_repo = manifest.get("repository", "")

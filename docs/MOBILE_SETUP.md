@@ -1,6 +1,6 @@
-# ULTRON-AI Mobile Client Setup Manual
+# Tag AI Mobile Client Setup Manual
 
-This document provides setup, pairing, network diagnostics, and troubleshooting guidelines for connecting the **ULTRON-AI Flutter Android Client** to your Windows Laptop host.
+This document provides setup, pairing, network diagnostics, and troubleshooting guidelines for connecting the **Tag AI Flutter Android Client** to your Windows Laptop host.
 
 ---
 
@@ -12,7 +12,7 @@ To compile, run, or build the Android client:
 2.  **Android Studio:** Install Android Studio and configure an Android virtual emulator (AVD) or enable USB debugging on your physical Android phone.
 3.  **Navigate to Workspace:**
     ```bash
-    cd mobile/ultron_mobile
+    cd mobile/tag_ai_mobile
     ```
 4.  **Install Pub Dependencies:**
     ```bash
@@ -61,7 +61,7 @@ By default, Windows blocks incoming network traffic on unknown ports (such as `8
 ### Command Line Configuration (Admin PowerShell):
 Run the following command as an Administrator to open port `8000` safely:
 ```powershell
-New-NetFirewallRule -DisplayName "ULTRON-AI API Gateway" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 8000
+New-NetFirewallRule -DisplayName "Tag AI API Gateway" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 8000
 ```
 *Note: Do NOT disable Windows Firewall globally. Only allow the specific port rule above.*
 

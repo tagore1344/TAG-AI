@@ -5,7 +5,7 @@ from typing import Dict, Any, Optional
 
 from core.evolution.evolution_memory import evo_memory_9c1
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class StrategyStore:

@@ -29,7 +29,7 @@ from microphone_broker import mic_broker, MicState
 class AdvancedSpeechEngine:
 
     def __init__(self):
-        print("[SPEECH] Initializing Ultron Voice Engine with Faster-Whisper...")
+        print("[SPEECH] Initializing TagAI Voice Engine with Faster-Whisper...")
 
         self.tts = None
         if pyttsx3 is not None:
@@ -66,7 +66,7 @@ class AdvancedSpeechEngine:
 
     def speak(self, text):
         """Standard Text to Speech Engine Output"""
-        print(f"[ULTRON TTS]: {text}")
+        print(f"[Tag AI TTS]: {text}")
         if pyttsx3 is None:
             return
 
@@ -124,7 +124,7 @@ class AdvancedSpeechEngine:
             mic_broker.release("AdvancedSpeechEngine")
             return ""
 
-        print("[ULTRON] Awaiting your direct command...")
+        print("[Tag AI] Awaiting your direct command...")
         frames = []
         start_time = time.time()
 

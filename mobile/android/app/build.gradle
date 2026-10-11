@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.ultron.android'
+    namespace 'com.tagai.android'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.ultron.android"
+        applicationId "com.tagai.android"
         minSdk 23
         targetSdk 34
         versionCode 1

@@ -6,7 +6,7 @@ from core.neural.neural_memory import neural_memory
 from core.neural.belief_state import belief_state
 from core.neural.causal_graph import causal_graph
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class SchemaReasoner:

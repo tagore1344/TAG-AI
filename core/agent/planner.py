@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-"""Small, model-agnostic planner used by ULTRON's agent loop."""
+"""Small, model-agnostic planner used by Tag AI's agent loop."""
 from __future__ import annotations
 
 from typing import List
@@ -41,7 +40,12 @@ class TaskPlanner:
             ]
 
         return steps
-=======
+
+
+# ---------------------------------------------------------------------------
+# Phase 9 candidate planner. TaskPlanner above stays for the agent loop.
+# ---------------------------------------------------------------------------
+
 # core/agent/planner.py
 import logging
 from typing import List, Dict, Any
@@ -50,7 +54,7 @@ from core.agent.task_graph import TaskGraph, TaskNode
 # Phase 9B Context Imports
 from core.context.memory_manager import memory_manager
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class CandidatePlan:
@@ -259,4 +263,3 @@ class Planner:
 
 
 planner = Planner()
->>>>>>> origin/main

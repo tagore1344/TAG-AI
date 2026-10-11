@@ -4,7 +4,7 @@ import logging
 
 from core.neural.neural_memory import neural_memory
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class BeliefState:

@@ -1,12 +1,12 @@
-# ULTRON-AI Authentication & Pairing Specification
+# Tag AI Authentication & Pairing Specification
 
-This document outlines the security, authorization, and cryptographic pairing design implemented in Phase 3 of the **ULTRON-AI** connected assistant gateway.
+This document outlines the security, authorization, and cryptographic pairing design implemented in Phase 3 of the **Tag AI** connected assistant gateway.
 
 ---
 
 ## 🔒 1. Core Security Boundary Definition
 
-Unlike basic home automation servers, ULTRON-AI does NOT treat local LAN presence or IP ownership as authorization. The host laptop enforces an absolute cryptographic boundary:
+Unlike basic home automation servers, Tag AI does NOT treat local LAN presence or IP ownership as authorization. The host laptop enforces an absolute cryptographic boundary:
 
 ```
 [ UNPAIRED CLIENT ]
@@ -21,13 +21,13 @@ Unlike basic home automation servers, ULTRON-AI does NOT treat local LAN presenc
 ## 🛠️ 2. Hashed SQLite Device Registry
 
 All security records, device details, and pairing sessions are persisted securely inside a local-only, thread-safe SQLite database:
-*   **Database Path:** `backend/data/ultron_devices.db` (strictly ignored by Git trackers).
+*   **Database Path:** `backend/data/tag_ai_devices.db` (strictly ignored by Git trackers).
 *   **Auto-Deployment:** The tables are statefully verified and created on every server startup via `backend/database/connection.py:initialize_database()`.
 
 ### A. Database Table Schemas
 
 #### 1. `devices` Registry Table
-Registers all client devices successfully paired and authorized to communicate with ULTRON:
+Registers all client devices successfully paired and authorized to communicate with Tag AI:
 ```sql
 CREATE TABLE devices (
     device_id TEXT PRIMARY KEY,       -- Secure random string, e.g. "android_8fa31e..."

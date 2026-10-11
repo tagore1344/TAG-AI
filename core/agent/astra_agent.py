@@ -1,4 +1,4 @@
-"""Astra-class agent kernel for ULTRON.
+"""Astra-class agent kernel for Tag AI.
 
 Uses the OpenAI Responses API as the reasoning engine and exposes a small,
 observable workspace tool surface for autonomous software work.
@@ -8,6 +8,9 @@ from __future__ import annotations
 import difflib
 import json
 import os
+
+from core.utils import bridge_legacy_env
+bridge_legacy_env()
 import subprocess
 from pathlib import Path
 from typing import Any
@@ -22,9 +25,9 @@ class AstraAgent:
     """Run bounded, tool-using tasks against a local project workspace."""
 
     def __init__(self, workspace: str | None = None, max_turns: int = 24) -> None:
-        self.workspace = Path(workspace or os.getenv("ULTRON_WORKSPACE", os.getcwd())).resolve()
+        self.workspace = Path(workspace or os.getenv("TAG_AI_WORKSPACE", os.getcwd())).resolve()
         self.max_turns = max(1, int(max_turns))
-        self.model = os.getenv("ULTRON_MODEL", "gpt-6-astra")
+        self.model = os.getenv("TAG_AI_MODEL", "gpt-6-astra")
         self.client = None
         if OpenAI is not None and os.getenv("OPENAI_API_KEY"):
             self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -35,7 +38,7 @@ class AstraAgent:
     def _safe_path(self, path: str) -> Path:
         candidate = (self.workspace / path).resolve()
         if candidate != self.workspace and self.workspace not in candidate.parents:
-            raise ValueError("Path escapes the ULTRON workspace.")
+            raise ValueError("Path escapes the Tag AI workspace.")
         return candidate
 
     def _run_shell(self, command: str, timeout: int = 30) -> dict[str, Any]:
@@ -196,7 +199,7 @@ class AstraAgent:
             return "Astra agent unavailable: set OPENAI_API_KEY and install the OpenAI SDK."
 
         instructions = (
-            "You are ULTRON's autonomous software agent. Work toward the user's goal "
+            "You are Tag AI's autonomous software agent. Work toward the user's goal "
             "using the available tools. Inspect before editing. Prefer workspace_patch "
             "for targeted changes and workspace_write only when creating/replacing a file "
             "is justified. Make the smallest correct changes, run relevant tests after "
@@ -207,7 +210,7 @@ class AstraAgent:
         )
         response = self.client.responses.create(
             model=self.model,
-            reasoning={"effort": os.getenv("ULTRON_REASONING_EFFORT", "high")},
+            reasoning={"effort": os.getenv("TAG_AI_REASONING_EFFORT", "high")},
             instructions=instructions,
             input=goal,
             tools=self._tools(),
@@ -233,7 +236,7 @@ class AstraAgent:
 
             response = self.client.responses.create(
                 model=self.model,
-                reasoning={"effort": os.getenv("ULTRON_REASONING_EFFORT", "high")},
+                reasoning={"effort": os.getenv("TAG_AI_REASONING_EFFORT", "high")},
                 instructions=instructions,
                 previous_response_id=response.id,
                 input=tool_outputs,

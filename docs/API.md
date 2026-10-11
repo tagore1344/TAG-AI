@@ -1,6 +1,6 @@
-# ULTRON-AI API Reference Manual (v1)
+# Tag AI API Reference Manual (v1)
 
-This document provides developers and mobile clients with the technical endpoint and protocol specification for communicating with the **ULTRON-AI Gateway Server**.
+This document provides developers and mobile clients with the technical endpoint and protocol specification for communicating with the **Tag AI Gateway Server**.
 
 ---
 
@@ -11,11 +11,11 @@ The backend is configured via standard system environment variables loaded via P
 
 | Variable | Default Value | Description |
 | :--- | :--- | :--- |
-| `ULTRON_HOST` | `0.0.0.0` | IP interface to bind. Use `0.0.0.0` to listen on all local network adapters. |
-| `ULTRON_PORT` | `8000` | Gateway port number. |
-| `ULTRON_ENV` | `development` | Operating state (`development`, `testing`, `production`). |
-| `ULTRON_LOG_LEVEL` | `INFO` | Console logging verbosity (`DEBUG`, `INFO`, `WARNING`, `ERROR`). |
-| `ULTRON_CORS_ORIGINS` | `*` | Configurable CORS allowed origins (JSON array or comma-separated lists). |
+| `TAG_AI_HOST` | `0.0.0.0` | IP interface to bind. Use `0.0.0.0` to listen on all local network adapters. |
+| `TAG_AI_PORT` | `8000` | Gateway port number. |
+| `TAG_AI_ENV` | `development` | Operating state (`development`, `testing`, `production`). |
+| `TAG_AI_LOG_LEVEL` | `INFO` | Console logging verbosity (`DEBUG`, `INFO`, `WARNING`, `ERROR`). |
+| `TAG_AI_CORS_ORIGINS` | `*` | Configurable CORS allowed origins (JSON array or comma-separated lists). |
 
 ### B. Execution Commands
 To start the FastAPI gateway server in the background or for development, use the following commands:
@@ -44,7 +44,7 @@ Checks the server health, liveness status, and current service build version.
     ```json
     {
       "status": "healthy",
-      "service": "ultron-api",
+      "service": "tag-ai-api",
       "version": "1.0.0"
     }
     ```
@@ -58,13 +58,13 @@ Checks the server health, liveness status, and current service build version.
 *   **Response Payload:**
     ```json
     {
-      "service": "ULTRON-AI",
+      "service": "Tag AI",
       "api": "v1"
     }
     ```
 
 ### 💬 2.3. AI Chat Query (`POST /api/v1/chat`)
-Queries the shared ULTRON AI core brain. Includes session tracking capability.
+Queries the shared Tag AI core brain. Includes session tracking capability.
 
 *   **Method:** `POST`
 *   **Path:** `/api/v1/chat`
@@ -72,7 +72,7 @@ Queries the shared ULTRON AI core brain. Includes session tracking capability.
 *   **Request Payload (`ChatRequest`):**
     ```json
     {
-      "message": "Hello ULTRON, what is the time?",
+      "message": "Hello Tag AI, what is the time?",
       "conversation_id": "session_optional_123"
     }
     ```
@@ -93,8 +93,8 @@ Queries the shared ULTRON AI core brain. Includes session tracking capability.
           "detail": {
             "success": false,
             "error": {
-              "code": "ULTRON_CORE_ERROR",
-              "message": "ULTRON could not process the request."
+              "code": "TAG_AI_CORE_ERROR",
+              "message": "Tag AI could not process the request."
             }
           }
         }
@@ -208,7 +208,7 @@ Upon establishing a WebSocket connection, the client instantly receives a confir
 {
   "event": "CONNECTION_ESTABLISHED",
   "timestamp": "2026-08-11T12:00:00.000000Z",
-  "message": "Connection to ULTRON-AI gateway established."
+  "message": "Connection to Tag AI gateway established."
 }
 ```
 

@@ -1,6 +1,6 @@
-# ULTRON-AI Distributed Ecosystem Architecture
+# Tag AI Distributed Ecosystem Architecture
 
-This document defines the production-grade architectural specification for transforming **ULTRON-AI** into a secure, robust, and extensible multi-device ecosystem. The architecture anchors a single Windows Laptop host as the canonical execution, automation, and AI orchestrator, communicating securely with remote clients (e.g. Flutter Android mobile apps) over local and private networks.
+This document defines the production-grade architectural specification for transforming **Tag AI** into a secure, robust, and extensible multi-device ecosystem. The architecture anchors a single Windows Laptop host as the canonical execution, automation, and AI orchestrator, communicating securely with remote clients (e.g. Flutter Android mobile apps) over local and private networks.
 
 ---
 
@@ -8,7 +8,7 @@ This document defines the production-grade architectural specification for trans
 
 ```
                                ┌─────────────────┐
-                               │     ULTRON      │
+                               │     Tag AI      │
                                └────────┬────────┘
                                         │
                          ┌──────────────┴──────────────┐
@@ -52,7 +52,7 @@ This document defines the production-grade architectural specification for trans
 
 ## 🧱 2. System Architecture Layers
 
-The ULTRON-AI ecosystem is divided into the following isolated, highly maintainable logical layers:
+The Tag AI ecosystem is divided into the following isolated, highly maintainable logical layers:
 
 ### 🧠 2.1. AI, Agent, and Memory Layer
 *   **AI Orchestration:** Exposes conversational capabilities by wrapping `AIOrchestrator` (`ai/orchestrator/ai_orchestrator.py`). Dispatches queries across Gemini, OpenAI, and DeepSeek, performing consensus merging.
@@ -65,7 +65,7 @@ The ULTRON-AI ecosystem is divided into the following isolated, highly maintaina
 
 ### 📱 2.3. Device & Session Layer (The Device System)
 This new subsystem operates inside `devices/` directory and manages all client connections:
-*   `device_registry.py`: Communicates with a lightweight SQLite database (`backend/data/ultron_devices.db`) to persist paired devices, names, hashes of tokens, and custom permissions.
+*   `device_registry.py`: Communicates with a lightweight SQLite database (`backend/data/tag_ai_devices.db`) to persist paired devices, names, hashes of tokens, and custom permissions.
 *   `device_manager.py`: Handles CRUD operations for paired clients, device status monitoring, and active connections.
 *   `pairing_manager.py`: Manages the 6-digit numeric pairing state machine (expiry check, code generation, client token distribution).
 *   `session_manager.py`: Manages ephemeral WebSocket connections and links active socket IDs to authenticated devices.
@@ -92,11 +92,7 @@ The mobile client and any other remote clients must authorize requests using sta
 ```http
 Authorization: Bearer <access_token>
 ```
-<<<<<<< HEAD
-*   **Token Protection:** To prevent leaks of critical API keys or raw tokens, **the server never stores raw authentication tokens in plaintext**. 
-=======
 *   **Token Protection:** To prevent leaks of critical API keys or raw tokens, **the server never stores raw authentication tokens in plaintext**.
->>>>>>> feature/astra-class-agent-core
 *   **Verification:** The SQLite device registry stores a secure hash of the token (`SHA-256` or equivalent). When a client sends a token, the API hashes it and compares it with the database.
 *   **Token Revocation:** Tokens can be instantly revoked by updating the `revoked` flag in the SQLite registry:
 ```

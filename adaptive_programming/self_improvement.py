@@ -23,7 +23,7 @@ from adaptive_programming.sandbox_manager import sandbox_manager
 from adaptive_programming.experience_tracker import experience_tracker
 from core.agent.proposal_manager import proposal_manager
 
-logger = logging.getLogger("ultron-adaptive")
+logger = logging.getLogger("tag-ai-adaptive")
 
 
 class SelfImprovementEngine:

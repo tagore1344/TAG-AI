@@ -9,7 +9,7 @@ from enum import Enum
 from backend.schemas.event import EventType, EventEnvelope
 from backend.api.websocket.connection_manager import manager
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class ConfirmationState(str, Enum):

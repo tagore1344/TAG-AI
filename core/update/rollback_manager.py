@@ -4,7 +4,7 @@ import logging
 from backend.database.connection import get_db_connection
 from core.update.version_manager import version_manager
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class RollbackManager:

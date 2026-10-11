@@ -20,7 +20,7 @@ import time
 import uuid
 from typing import Dict, List, Optional, Tuple
 
-logger = logging.getLogger("ultron-adaptive")
+logger = logging.getLogger("tag-ai-adaptive")
 
 from adaptive_programming.repository_engine import RepositoryEngine
 from adaptive_programming.code_search import CodeSearch
@@ -312,7 +312,7 @@ class CodingAgent:
 
         # 3. Ask the existing brain (provider orchestration) for a minimal patch.
         prompt = (
-            "You are ULTRON's programming agent. Diagnose the failing test and "
+            "You are Tag AI's programming agent. Diagnose the failing test and "
             "propose a MINIMAL fix.\n\n"
             f"Failing test: {failure.get('test', 'unknown')}\n"
             f"Failure message:\n{message[:1500]}\n\n"

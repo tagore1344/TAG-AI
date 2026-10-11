@@ -1,5 +1,6 @@
 # core/agent/proposal_manager.py â€” Phase 9E Cognitive Change-Proposal Lifecycle
 import os
+from core.utils import adopt_legacy_path
 import json
 import uuid
 import sqlite3
@@ -7,10 +8,10 @@ import datetime
 import logging
 from typing import List, Dict, Any, Optional, Tuple
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 DB_DIR = "backend/data"
-DB_PATH = os.path.join(DB_DIR, "ultron_context.db")
+DB_PATH = adopt_legacy_path(os.path.join(DB_DIR, "tag_ai_context.db"))
 
 # Risk taxonomy â€” mirrors the gateway command classification (docs/ARCHITECTURE.md Â§4.2)
 RISK_SAFE = "SAFE"
@@ -27,7 +28,7 @@ PROPOSAL_STATUSES = (
 class ProposalManager:
     """Manages the full lifecycle of cognitive change-proposals.
 
-    Proposals are created by ULTRON's cognitive layers (judgment engine,
+    Proposals are created by Tag AI's cognitive layers (judgment engine,
     evolution/hypothesis engine) whenever a suggested adaptation crosses a
     policy boundary requiring human authorization. Persisted in SQLite so
     proposals survive gateway restarts and can be re-hydrated by HUD clients.

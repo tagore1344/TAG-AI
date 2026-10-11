@@ -1,4 +1,4 @@
-"""State primitives for ULTRON's agent execution loop.
+"""State primitives for Tag AI's agent execution loop.
 
 The state is deliberately serialisable so a future persistent store can replace
 this in-memory implementation without changing the agent contract.

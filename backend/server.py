@@ -103,7 +103,7 @@ def create_app() -> FastAPI:
     @app.get("/", summary="Root Endpoint")
     async def get_root():
         return {
-            "service": "ULTRON-AI",
+            "service": "Tag AI",
             "api": "v1"
         }
 
@@ -140,7 +140,7 @@ def create_app() -> FastAPI:
             "device_id": device_id,
             "timestamp": meta["connected_at"],
             "server_version": settings.app_version,
-            "message": "Connection to ULTRON-AI gateway established."
+            "message": "Connection to Tag AI gateway established."
         }
         await manager.send_personal_message(handshake_payload, websocket)
 
@@ -223,7 +223,7 @@ app = create_app()
 
 if __name__ == "__main__":
     import uvicorn
-    logger.info("Starting ULTRON-AI FastAPI Gateway server...")
+    logger.info("Starting Tag AI FastAPI Gateway server...")
     uvicorn.run(
         "backend.server:app",
         host=settings.host,

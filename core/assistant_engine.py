@@ -8,7 +8,7 @@ from core.agent.async_agent_loop import AsyncAgentLoop
 
 
 class AssistantEngine:
-    """Top-level ULTRON runtime with direct tools and an autonomous agent path."""
+    """Top-level Tag AI runtime with direct tools and an autonomous agent path."""
 
     _AGENT_SIGNALS = (
         "build ", "create ", "develop ", "implement ", "debug ",

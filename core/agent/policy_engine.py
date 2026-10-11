@@ -2,7 +2,7 @@
 import logging
 from enum import IntEnum
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class AutonomyLevel(IntEnum):

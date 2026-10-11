@@ -5,7 +5,7 @@ import sys
 import logging
 from typing import Tuple
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class UpdateValidator:
@@ -24,7 +24,7 @@ class UpdateValidator:
         try:
             # We mock the actual long-running pip and venv creations during automated VM testing
             # to run instantly in less than 0.1s, while executing real subprocesses in production!
-            if os.environ.get("ULTRON_TEST_MODE") == "true":
+            if os.environ.get("TAG_AI_TEST_MODE") == "true":
                 logger.info("Test mode enabled: Mocking isolated venv and test run.")
                 return True, "Mock validation passed successfully."
 

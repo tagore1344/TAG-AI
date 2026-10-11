@@ -6,11 +6,11 @@
 
     <application
         android:allowBackup="true"
-        android:label="Ultron Node"
+        android:label="Tag AI"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Material">
         <activity
-            android:name="com.ultron.android.MainActivity"
+            android:name="com.tagai.android.MainActivity"
             android:exported="true"
             android:theme="@android:style/Theme.Material">
             <intent-filter>

@@ -1,14 +1,15 @@
 # memory_engine.py
 import json
 import os
+from core.utils import adopt_legacy_path
 import datetime
 
 
 class MemoryEngine:
 
     def __init__(self):
-        # ULTRON memory with one-time migration from the legacy jarvis_memory.json
-        self.memory_file = "ultron_memory.json"
+        # Tag AI memory with one-time migration from the legacy jarvis_memory.json
+        self.memory_file = adopt_legacy_path("tag_ai_memory.json")
         self.memory = self.load_memory()
         if not os.path.exists(self.memory_file) and os.path.exists("jarvis_memory.json"):
             try:

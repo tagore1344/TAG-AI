@@ -1,7 +1,10 @@
-# core/constants.py — Shared constants for the TAG AI application
+# core/constants.py — Shared constants for the Tag AI application
+
+from core.utils import bridge_legacy_env
+bridge_legacy_env()
 
 # Assistant identity
-ASSISTANT_NAME = "TAG"
+ASSISTANT_NAME = "Tag AI"
 WAKE_WORDS = ["tag", "hey tag", "ok tag", "hi tag", "yo tag"]
 
 # AI model names
@@ -13,9 +16,9 @@ WHISPER_DEVICE = "cpu"
 
 # File paths
 CONFIG_FILE = "assistant_config.json"
-MEMORY_FILE = "ultron_memory.json"
+MEMORY_FILE = "tag_ai_memory.json"
 SCREENSHOT_PATH = "data/latest_screen.png"
-LOG_FILE = "ultron.log"
+LOG_FILE = "tag_ai.log"
 
 # Audio settings
 AUDIO_RATE = 16000

@@ -5,7 +5,7 @@ are required. They pin down the contracts fixed in the audit session:
 
 * ModelSelector routes by category AND respects availability.
 * AIOrchestrator cascades through providers when the primary fails.
-* ULTRON_CONSENSUS_MODE=multi builds consensus across all live providers.
+* TAG_AI_CONSENSUS_MODE=multi builds consensus across all live providers.
 * The hardcoded tool-call hack ("open instagram") no longer bypasses routing.
 """
 
@@ -172,7 +172,7 @@ def test_multi_mode_merges_live_providers(monkeypatch):
     _set_ask(monkeypatch, "ask_gemini", lambda p: "Gemini says C.")
 
     brain = AIOrchestrator()
-    with patch.dict(os.environ, {"ULTRON_CONSENSUS_MODE": "multi"}):
+    with patch.dict(os.environ, {"TAG_AI_CONSENSUS_MODE": "multi"}):
         result = brain.ask("plain question")
 
     # All three live answers merged into a single consolidated payload.
@@ -189,7 +189,7 @@ def test_multi_mode_excludes_dead_providers(monkeypatch):
     _set_ask(monkeypatch, "ask_gemini", lambda p: "Gemini fine too.")
 
     brain = AIOrchestrator()
-    with patch.dict(os.environ, {"ULTRON_CONSENSUS_MODE": "multi"}):
+    with patch.dict(os.environ, {"TAG_AI_CONSENSUS_MODE": "multi"}):
         result = brain.ask("another question")
 
     assert "OpenAI fine." in result

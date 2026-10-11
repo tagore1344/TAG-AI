@@ -6,7 +6,7 @@ import zipfile
 import logging
 from typing import Tuple, List
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 RELEASES_DIR = "releases"
 
 

@@ -3,7 +3,7 @@ import uuid
 from contextvars import ContextVar
 
 # scoped to the async request lifecycle (FastAPI contextvars propagate)
-_REQUEST_ID: ContextVar[str] = ContextVar("ultron_request_id", default="req_unknown")
+_REQUEST_ID: ContextVar[str] = ContextVar("tag_ai_request_id", default="req_unknown")
 
 
 def generate_request_id() -> str:

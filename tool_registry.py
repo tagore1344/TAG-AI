@@ -1,4 +1,4 @@
-# tool_registry.py — TAG runtime bridge
+# tool_registry.py — Tag AI runtime bridge
 
 class ToolRegistry:
     """Synchronous legacy tool registry used by assistant_with_brain.py."""

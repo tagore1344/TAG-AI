@@ -1,4 +1,4 @@
-# ULTRON-AI Phase 9E — Cognitive Proposals on the Mobile HUD
+# Tag AI Phase 9E — Cognitive Proposals on the Mobile HUD
 
 **Status:** Implemented
 **Security Boundary:** Unchanged — proposals never bypass the existing policy/confirmation stack.
@@ -7,7 +7,7 @@
 
 ## 1. Purpose
 
-Phase 9E closes the loop between ULTRON's independent reasoning layers and the
+Phase 9E closes the loop between Tag AI's independent reasoning layers and the
 human operator. When a cognitive subsystem (judgment engine, evolution
 hypothesis engine, agent runtime) concludes that a change is advisable but the
 action crosses a policy boundary, it now surfaces a **Cognitive Change-Proposal**
@@ -16,10 +16,10 @@ that the operator can review, approve, reject, or cancel from the mobile HUD.
 ## 2. Data Flow
 
 ```
-ULTRON Cognitive Engine (judgment / evolution / agent runtime)
+Tag AI Cognitive Engine (judgment / evolution / agent runtime)
         │  create_proposal(...)
         ▼
-ProposalManager (SQLite: backend/data/ultron_context.db
+ProposalManager (SQLite: backend/data/tag_ai_context.db
                  tables: cognitive_proposals + proposal_event_log)
         │  broadcast PROPOSAL_CREATED (WebSocket, all paired HUDs)
         ▼
@@ -89,7 +89,7 @@ Approved SAFE adaptations are persisted into `assistant_config.json`:
   badges — SAFE (green), CONFIRM (amber), HIGH_RISK (red) — and controls.
 * HIGH_RISK approvals additionally require an explicit on-device reinforcement
   dialog (the gateway's live confirmation gate still applies regardless).
-* Tests: `mobile/ultron_mobile/test/proposal_model_test.dart`.
+* Tests: `mobile/tag_ai_mobile/test/proposal_model_test.dart`.
 
 ## 8. Testing
 

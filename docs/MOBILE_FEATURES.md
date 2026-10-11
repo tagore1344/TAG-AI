@@ -1,12 +1,12 @@
-# ULTRON-AI Mobile HUD Features & Integration
+# Tag AI Mobile HUD Features & Integration
 
-This document defines the functional scope, network behaviors, and structural security boundaries governing the features implemented in Phase 6 of the **ULTRON-AI Mobile HUD** client app.
+This document defines the functional scope, network behaviors, and structural security boundaries governing the features implemented in Phase 6 of the **Tag AI Mobile HUD** client app.
 
 ---
 
 ## 💬 1. Encrypted Chat Comm Channel
 
-The Chat UI enables full real-time conversations directly with the shared laptop-bound **ULTRON AI Core Brain**:
+The Chat UI enables full real-time conversations directly with the shared laptop-bound **Tag AI Core Brain**:
 *   **Zero Local Duplicate Brains:** The mobile client does NOT run model weights locally. It acts strictly as an interface, sending text inputs to `POST /api/v1/chat` and parsing standard outputs.
 *   **Stateful Conversation ID:** On initial prompt, the backend creates a tracking `conversation_id` which the phone captures and attaches to subsequent REST requests. This ensures conversational context stays perfectly synchronized with your laptop assistant's history log.
 *   **Security Disclosure Block:** Internal system prompt filters, raw API keys (Gemini/OpenAI/DeepSeek), or server stack traces are strictly filtered. The client is only provided the final clean text generated for the user.
@@ -40,7 +40,7 @@ Enforces strict boundaries when interacting with laptop shortcuts:
 *   **CONFIRMATION_REQUIRED Actions (Approval Handshakes):** Launching application (Chrome), taking screenshots, and volume triggers pause execution.
 *   **Real-time Approval Popups:** The server fires a WebSocket `CONFIRMATION_REQUEST` packet with a **30-second countdown**. The mobile client displays an overlay window where the user can click `CANCEL` or `CONFIRM`:
 ```
-   ULTRON REQUEST
+   Tag AI REQUEST
    Launch Chrome?
    This action opens Chrome on your laptop.
    Expires in 27 seconds.

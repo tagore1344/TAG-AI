@@ -2,7 +2,7 @@
 import logging
 from core.agent.task_graph import TaskNode, NodeState
 
-logger = logging.getLogger("ultron-api")
+logger = logging.getLogger("tag-ai-api")
 
 
 class RecoveryEngine:
